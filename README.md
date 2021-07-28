@@ -63,9 +63,9 @@ print(f"Trackers: {d.trackers}")
 
 ## Examples
 
-- [Check your API quotas](https://github.com/spyse-com/spyse-python/examples/get_account_quotas.py)
-- [Subdomains lookup ('Search', 'Scroll', 'Count' methods demo)](https://github.com/spyse-com/spyse-python/examples/subdomains_lookup.py)
-- [Domain lookup](https://github.com/spyse-com/spyse-python/examples/domain_lookup.py)
+- [Check your API quotas](https://github.com/spyse-com/spyse-python/tree/main/examples/get_account_quotas.py)
+- [Subdomains lookup ('Search', 'Scroll', 'Count' methods demo)](https://github.com/spyse-com/spyse-python/tree/main/examples/subdomains_lookup.py)
+- [Domain lookup](https://github.com/spyse-com/spyse-python/tree/main/examples/domain_lookup.py)
 
 
 Note: You need to export access_token to run any example:
@@ -165,12 +165,12 @@ python client_test.py
 
 ## License
 
-Distributed under the MIT License. See [LICENSE](https://github.com/spyse-com/spyse-python/LICENSE.md) for more information.
+Distributed under the MIT License. See [LICENSE](https://github.com/spyse-com/spyse-python/tree/main/LICENSE.md) for more information.
 
 ## Troubleshooting and contacts
 
 For any proposals and questions, please write at:
 
-- Email: [contact@spyse.com](contact@spyse.com)
+- Email: [contact@spyse.com](mailto:contact@spyse.com)
 - Discord: [channel](https://discord.gg/XqaUP8c)
 - Twitter: [@scanpatch](https://twitter.com/scanpatch), [@MrMristov](https://twitter.com/MrMristov)
