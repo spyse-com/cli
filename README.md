@@ -152,8 +152,8 @@ else:
 
 ### Installation
 ```bash
-git pull https://github.com/spyse-com/spyse-python
-pip install -e setup.py
+git clone https://github.com/spyse-com/spyse-python
+pip install -e .
 ```
 
 

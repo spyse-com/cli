@@ -1,3 +1,4 @@
 requests~=2.26.0
 dataclasses~=0.6
 responses~=0.13.3
+dataclasses-json~=0.5.4
