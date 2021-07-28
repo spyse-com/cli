@@ -93,10 +93,10 @@ domain = "att.com"
 q.append_param(QueryParam(DomainSearchParams.name, Operators.ends_with, '.' + domain))
 
 # Add param to search only for alive subdomains
-q.append_param(QueryParam(DomainSearchParams.http_extract_status_code, Operators.equals, 200))
+q.append_param(QueryParam(DomainSearchParams.http_extract_status_code, Operators.equals, "200"))
 
 # Add param to remove subdomains seen as PTR records
-q.append_param(QueryParam(DomainSearchParams.is_ptr, Operators.equals, False))
+q.append_param(QueryParam(DomainSearchParams.is_ptr, Operators.equals, "False"))
 
 # Next, you can use the query to run search, count or scroll methods
 c = Client("your-api-token-here")
@@ -116,16 +116,16 @@ q = SearchQuery()
 q.append_param(QueryParam(IPSearchParams.geo_country_iso_code, Operators.equals, 'US'))
 
 # Add param to search only for hosts with open 22 port
-q.append_param(QueryParam(IPSearchParams.open_port, Operators.equals, 22))
+q.append_param(QueryParam(IPSearchParams.open_port, Operators.equals, "22"))
 
 # Add param to search only for hosts with nginx
 q.append_param(QueryParam(IPSearchParams.port_technology_name, Operators.contains, "nginx"))
 
 # Next, you can use the query to run search, count or scroll methods
 c = Client("your-api-token-here")
-total_count = c.count_domains(q)
-search_results = c.search_domains(q)
-scroll_results = c.scroll_domains(q).results
+total_count = c.count_ip(q)
+search_results = c.search_ip(q)
+scroll_results = c.scroll_ip(q).results
 ```
 
 ## Scroll vs Search
