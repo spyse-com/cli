@@ -13,7 +13,8 @@ class QueryParam:
 
 @dataclass
 class SearchQuery:
-    query: List[Dict[str, Dict[str, str]]]
+    def __init__(self):
+        self.query: List[Dict[str, Dict[str, str]]] = []
 
     def append_param(self, param: QueryParam):
         """Adds given param to the search query"""
