@@ -1,3 +1,4 @@
+[base_url]: https://github.com/spyse-com/spyse-python
 # Python wrapper for Spyse API
 
 The official wrapper for [spyse.com](https://spyse.com/) API, written in Python, aimed to help developers build their
@@ -63,9 +64,9 @@ print(f"Trackers: {d.trackers}")
 
 ## Examples
 
-- [Check your API quotas](./examples/get_account_quotas.py)
-- [Subdomains lookup ('Search', 'Scroll', 'Count' methods demo)](./examples/subdomains_lookup.py)
-- [Domain lookup](./examples/domain_lookup.py)
+- [Check your API quotas]([base_url]/examples/get_account_quotas.py)
+- [Subdomains lookup ('Search', 'Scroll', 'Count' methods demo)]([base_url]/examples/subdomains_lookup.py)
+- [Domain lookup]([base_url]/examples/domain_lookup.py)
 
 
 Note: You need to export access_token to run any example:
@@ -165,7 +166,7 @@ python client_test.py
 
 ## License
 
-Distributed under the MIT License. See [LICENSE](./LICENSE.md) for more information.
+Distributed under the MIT License. See [LICENSE]([base_url]/LICENSE.md) for more information.
 
 ## Troubleshooting and contacts
 
