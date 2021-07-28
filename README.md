@@ -29,13 +29,13 @@ For more information about the API, please check the [API Reference](https://spy
 ## Installation
 
 ```bash
-pip3 install spyse
+pip3 install spyse-python
 ```
 
 ## Updating
 
 ```bash
-pip3 install --no-cache-dir spyse.py
+pip3 install --no-cache-dir spyse-python
 ```
 
 
