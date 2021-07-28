@@ -259,7 +259,7 @@
             }
           }
         ],
-        "technology": [
+        "technologies": [
           {
             "name": "Nginx",
             "version": "1.18.0"

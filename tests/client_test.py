@@ -156,7 +156,7 @@ class TestSpyse(unittest.TestCase):
         self.assertEqual(final.organizations[0].crunchbase.name, "Spyse")
         self.assertEqual(final.organizations[0].crunchbase.categories[0], "Big Data")
         self.assertEqual(final.organizations[0].crunchbase.is_primary, True)
-        self.assertEqual(final.technology[0].name, "Nginx")
+        self.assertEqual(final.technologies[0].name, "Nginx")
         self.assertEqual(final.trackers.adsense_id, "")
 
     @responses.activate
