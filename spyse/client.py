@@ -1,3 +1,5 @@
+import json
+
 import requests
 from typing import List, Optional
 
@@ -27,14 +29,14 @@ class Client:
 
     def __search(self, endpoint, query: SearchQuery, limit: int = MAX_LIMIT, offset: int = 0) -> Response:
         return Response.from_dict(self.session.post(endpoint,
-                                                    json={"search_params": query.to_json(), "limit": limit,
+                                                    json={"search_params": query.get(), "limit": limit,
                                                           "offset": offset}).json())
 
     def __scroll(self, endpoint, query: SearchQuery, scroll_id: Optional[str] = None) -> Response:
         if scroll_id:
-            body = {"search_params": query.to_json(), "scroll_id": scroll_id}
+            body = {"search_params": query.get(), "scroll_id": scroll_id}
         else:
-            body = {"search_params": query.to_json()}
+            body = {"search_params": query.get()}
 
         return Response.from_dict(self.session.post(endpoint, json=body).json())
 
@@ -54,7 +56,7 @@ class Client:
 
     def count_autonomous_systems(self, query: SearchQuery) -> int:
         """Returns the precise number of search results that matched the search query."""
-        response = self.__search('{}/as/search/count'.format(self.base_url), query.to_json())
+        response = self.__search('{}/as/search/count'.format(self.base_url), query)
         response.check_errors()
 
         return response.data.total_items
@@ -65,7 +67,7 @@ class Client:
         Allows getting only the first 10,000 results.
         """
 
-        response = self.__search('{}/as/search'.format(self.base_url), query.to_json(), limit, offset)
+        response = self.__search('{}/as/search'.format(self.base_url), query, limit, offset)
         response.check_errors()
 
         as_list = list()
@@ -79,7 +81,7 @@ class Client:
         Returns a list of autonomous systems that matched the search query.
         Allows getting all the results but requires a Spyse Pro subscription
         """
-        response = self.__scroll('{}/as/scroll/search'.format(self.base_url), query.to_json(), scroll_id)
+        response = self.__scroll('{}/as/scroll/search'.format(self.base_url), query, scroll_id)
         response.check_errors()
 
         as_list = list()
@@ -100,7 +102,7 @@ class Client:
         Returns a list of domains that matched the search query.
         Allows getting only the first 10,000 results.
         """
-        response = self.__search('{}/domain/search'.format(self.base_url), query.to_json(), limit, offset)
+        response = self.__search('{}/domain/search'.format(self.base_url), query, limit, offset)
         response.check_errors()
 
         domains = list()
@@ -111,7 +113,7 @@ class Client:
 
     def count_domains(self, query: SearchQuery):
         """Returns the precise number of search results that matched the search query."""
-        response = self.__search('{}/domain/search/count'.format(self.base_url), query.to_json())
+        response = self.__search('{}/domain/search/count'.format(self.base_url), query)
         response.check_errors()
 
         return response.data.total_items
@@ -121,7 +123,7 @@ class Client:
         Returns a list of domains that matched the search query.
         Allows getting all the results but requires a Spyse Pro subscription
         """
-        response = self.__scroll('{}/domain/scroll/search'.format(self.base_url), query.to_json(), scroll_id)
+        response = self.__scroll('{}/domain/scroll/search'.format(self.base_url), query, scroll_id)
         response.check_errors()
 
         domains = list()
@@ -142,7 +144,7 @@ class Client:
         Returns a list of IPv4 hosts that matched the search query.
         Allows getting only the first 10,000 results.
         """
-        response = self.__search('{}/ip/search'.format(self.base_url), query.to_json(), limit, offset)
+        response = self.__search('{}/ip/search'.format(self.base_url), query, limit, offset)
         response.check_errors()
 
         ips = list()
@@ -153,7 +155,7 @@ class Client:
 
     def count_ip(self, query: SearchQuery) -> int:
         """Returns the precise number of search results that matched the search query."""
-        response = self.__search('{}/ip/search/count'.format(self.base_url), query.to_json())
+        response = self.__search('{}/ip/search/count'.format(self.base_url), query)
         response.check_errors()
 
         return response.data.total_items
@@ -163,7 +165,7 @@ class Client:
         Returns a list of IPv4 hosts that matched the search query.
         Allows getting all the results but requires a Spyse Pro subscription
         """
-        response = self.__scroll('{}/ip/scroll/search'.format(self.base_url), query.to_json(), scroll_id)
+        response = self.__scroll('{}/ip/scroll/search'.format(self.base_url), query, scroll_id)
         response.check_errors()
 
         ips = list()
@@ -184,7 +186,7 @@ class Client:
         Returns a list of SSL/TLS certificate hosts that matched the search query.
         Allows getting only the first 10,000 results.
         """
-        response = self.__search('{}/certificate/search'.format(self.base_url), query.to_json(), limit, offset)
+        response = self.__search('{}/certificate/search'.format(self.base_url), query, limit, offset)
         response.check_errors()
 
         certs = list()
@@ -195,7 +197,7 @@ class Client:
 
     def count_certificate(self, query: SearchQuery) -> int:
         """Returns the precise number of search results that matched the search query."""
-        response = self.__search('{}/certificate/search/count'.format(self.base_url), query.to_json())
+        response = self.__search('{}/certificate/search/count'.format(self.base_url), query)
         response.check_errors()
 
         return response.data.total_items
@@ -205,7 +207,7 @@ class Client:
         Returns a list of SSL/TLS certificates that matched the search query.
         Allows getting all the results but requires a Spyse Pro subscription
         """
-        response = self.__scroll('{}/certificate/scroll/search'.format(self.base_url), query.to_json(), scroll_id)
+        response = self.__scroll('{}/certificate/scroll/search'.format(self.base_url), query, scroll_id)
         response.check_errors()
 
         certs = list()
@@ -226,7 +228,7 @@ class Client:
         Returns a list of CVE that matched the search query.
         Allows getting only the first 10,000 results.
         """
-        response = self.__search('{}/cve/search'.format(self.base_url), query.to_json(), limit, offset)
+        response = self.__search('{}/cve/search'.format(self.base_url), query, limit, offset)
         response.check_errors()
 
         cve_list = list()
@@ -237,7 +239,7 @@ class Client:
 
     def count_cve(self, query: SearchQuery) -> int:
         """Returns the precise number of search results that matched the search query."""
-        response = self.__search('{}/cve/search/count'.format(self.base_url), query.to_json())
+        response = self.__search('{}/cve/search/count'.format(self.base_url), query)
         response.check_errors()
 
         return response.data.total_items
@@ -247,7 +249,7 @@ class Client:
         Returns a list of CVEs that matched the search query.
         Allows getting all the results but requires a Spyse Pro subscription
         """
-        response = self.__scroll('{}/cve/scroll/search'.format(self.base_url), query.to_json(), scroll_id)
+        response = self.__scroll('{}/cve/scroll/search'.format(self.base_url), query, scroll_id)
         response.check_errors()
 
         cve_list = list()
@@ -268,7 +270,7 @@ class Client:
         Returns a list of emails that matched the search query.
         Allows getting only the first 10,000 results.
         """
-        response = self.__search('{}/email/search'.format(self.base_url), query.to_json(), limit, offset)
+        response = self.__search('{}/email/search'.format(self.base_url), query, limit, offset)
         response.check_errors()
 
         emails = list()
@@ -279,7 +281,7 @@ class Client:
 
     def count_emails(self, query: SearchQuery) -> int:
         """Returns the precise number of search results that matched the search query."""
-        response = self.__search('{}/cve/email/count'.format(self.base_url), query.to_json())
+        response = self.__search('{}/cve/email/count'.format(self.base_url), query)
         response.check_errors()
 
         return response.data.total_items
@@ -289,7 +291,7 @@ class Client:
         Returns a list of emails that matched the search query.
         Allows getting all the results but requires a Spyse Pro subscription
         """
-        response = self.__scroll('{}/email/scroll/search'.format(self.base_url), query.to_json(), scroll_id)
+        response = self.__scroll('{}/email/scroll/search'.format(self.base_url), query, scroll_id)
         response.check_errors()
 
         emails = list()

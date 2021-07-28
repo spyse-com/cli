@@ -28,9 +28,8 @@ class SearchQuery:
 
         self.query.append(options)
 
-    def to_json(self):
-        """Converts query object to json"""
-        return json.dumps(self.query)
+    def get(self):
+        return self.query
 
 
 class ASSearchParams:
