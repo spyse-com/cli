@@ -1,0 +1,14 @@
+{
+  "data": {
+    "total_count": 1,
+    "offset": 0,
+    "limit": 25,
+    "items": [
+      {
+        "value": "13.170.7.0",
+        "first_seen": "2020-12-18",
+        "last_seen": "2020-12-18"
+      }
+    ]
+  }
+}

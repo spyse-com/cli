@@ -1,0 +1,76 @@
+{
+  "data": {
+    "total_count": 1,
+    "offset": 0,
+    "limit": 1,
+    "items": [
+      {
+        "admin": {
+          "city": "",
+          "country": "",
+          "email": "",
+          "fax": "",
+          "fax_ext": "",
+          "id": "",
+          "name": "",
+          "organization": "",
+          "phone": "",
+          "phone_ext": "",
+          "postal_code": "",
+          "province": "",
+          "street": "",
+          "street_ext": ""
+        },
+        "registrant": {
+          "city": "",
+          "country": "",
+          "email": "",
+          "fax": "",
+          "fax_ext": "",
+          "id": "",
+          "name": "",
+          "organization": "",
+          "phone": "",
+          "phone_ext": "",
+          "postal_code": "",
+          "province": "",
+          "street": "",
+          "street_ext": ""
+        },
+        "registrar": {
+          "created_date": "2013-12-16T19:33:28Z",
+          "domain_dnssec": "unsigned",
+          "domain_id": "1839386697_DOMAIN_COM-VRSN",
+          "domain_name": "101REASONSFILM.COM",
+          "domain_status": "clientTransferProhibited",
+          "emails": "abuse@namecheap.com",
+          "expiration_date": "2021-12-16T19:33:28Z",
+          "name_servers": "NS14.DNSMADEEASY.COM,NS15.DNSMADEEASY.COM,NS10.DNSMADEEASY.COM,NS11.DNSMADEEASY.COM,NS12.DNSMADEEASY.COM,NS13.DNSMADEEASY.COM",
+          "referral_url": "",
+          "registrar_id": "1068",
+          "registrar_name": "NameCheap, Inc.",
+          "updated_date": "2020-11-16T05:31:14Z",
+          "whois_server": "whois.namecheap.com"
+        },
+        "tech": {
+          "city": "",
+          "country": "",
+          "email": "",
+          "fax": "",
+          "fax_ext": "",
+          "id": "",
+          "name": "",
+          "organization": "",
+          "phone": "",
+          "phone_ext": "",
+          "postal_code": "",
+          "province": "",
+          "street": "",
+          "street_ext": ""
+        },
+        "updated_at": null,
+        "created_at": "2021-03-16T23:00:00+02:00"
+      }
+    ]
+  }
+}

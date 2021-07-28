@@ -1,0 +1,221 @@
+{
+  "data": {
+    "items": [
+      {
+        "parsed": {
+          "extensions": {
+            "authority_info_access": {
+              "issuer_urls": null,
+              "ocsp_urls": null
+            },
+            "authority_key_id": "",
+            "basic_constraints": {
+              "is_ca": null,
+              "max_path_len": null
+            },
+            "certificate_policies": null,
+            "crl_distribution_points": null,
+            "extended_key_usage": {
+              "any": null,
+              "apple_ichat_encryption": null,
+              "apple_ichat_signing": null,
+              "apple_system_identity": null,
+              "client_auth": null,
+              "code_signing": null,
+              "dvcs": null,
+              "eap_over_lan": null,
+              "eap_over_ppp": null,
+              "email_protection": null,
+              "ipsec_end_system": null,
+              "ipsec_intermediate_system_usage": null,
+              "ipsec_tunnel": null,
+              "ipsec_user": null,
+              "microsoft_ca_exchange": null,
+              "microsoft_cert_trust_list_signing": null,
+              "microsoft_document_signing": null,
+              "microsoft_drm": null,
+              "microsoft_efs_recovery": null,
+              "microsoft_embedded_nt_crypto": null,
+              "microsoft_encrypted_file_system": null,
+              "microsoft_enrollment_agent": null,
+              "microsoft_kernel_mode_code_signing": null,
+              "microsoft_key_recovery_21": null,
+              "microsoft_key_recovery_3": null,
+              "microsoft_lifetime_signing": null,
+              "microsoft_nt5_crypto": null,
+              "microsoft_oem_whql_crypto": null,
+              "microsoft_qualified_subordinate": null,
+              "microsoft_root_list_signer": null,
+              "microsoft_server_gated_crypto": null,
+              "microsoft_smartcard_logon": null,
+              "microsoft_system_health": null,
+              "microsoft_timestamp_signing": null,
+              "microsoft_whql_crypto": null,
+              "sbgp_cert_aa_service_auth": null,
+              "server_auth": null,
+              "time_stamping": null
+            },
+            "issuer_alt_name": {
+              "directory_names": null,
+              "dns_names": null,
+              "email_addresses": null,
+              "ip_addresses": null,
+              "other_names": null,
+              "registered_ids": null,
+              "uniform_resource_identifiers": null
+            },
+            "key_usage": {
+              "certificate_sign": null,
+              "content_commitment": true,
+              "crl_sign": null,
+              "data_encipherment": null,
+              "decipher_only": null,
+              "digital_signature": true,
+              "encipher_only": null,
+              "key_agreement": null,
+              "key_encipherment": true,
+              "value": 7
+            },
+            "name_constraints": null,
+            "signed_certificate_timestamps": null,
+            "subject_alt_name": {
+              "directory_names": null,
+              "dns_names": null,
+              "email_addresses": null,
+              "ip_addresses": null,
+              "other_names": null,
+              "registered_ids": null,
+              "uniform_resource_identifiers": null
+            },
+            "subject_key_id": "24193db74857f02e0b6d241bf4c451da3f3e6d75"
+          },
+          "fingerprint_md5": "e2f0b2d0878fb4d30a0186d27744e7ff",
+          "fingerprint_sha1": "3d060fe1aa3b950c1bd11d41a9d88eef4ffa0de5",
+          "fingerprint_sha256": "5c157070be587becb7856643c9be75ab31726a0328a88377b0093c908a53abf5",
+          "issuer": {
+            "common_name": [
+              "3AM LLC Internal Certificate Authority"
+            ],
+            "country": [
+              "US"
+            ],
+            "domain_component": null,
+            "email_address": [
+              "team@3amteam.com"
+            ],
+            "given_name": null,
+            "jurisdiction_country": null,
+            "jurisdiction_locality": null,
+            "jurisdiction_province": null,
+            "locality": [
+              "Torrington"
+            ],
+            "organization": [
+              "3AM LLC"
+            ],
+            "organizational_unit": [
+              "Office of the Lead Developer"
+            ],
+            "postal_code": null,
+            "province": [
+              "Connecticut"
+            ],
+            "serial_number": null,
+            "street_address": null,
+            "surname": null
+          },
+          "issuer_dn": "C=US, ST=Connecticut, L=Torrington, O=3AM LLC, OU=Office of the Lead Developer, CN=3AM LLC Internal Certificate Authority, emailAddress=team@3amteam.com",
+          "names": [
+            "*.3amteam.com"
+          ],
+          "redacted": null,
+          "serial_number": "12",
+          "signature": {
+            "self_signed": null,
+            "signature_algorithm": {
+              "name": "SHA1-RSA",
+              "oid": "1.2.840.113549.1.1.5"
+            },
+            "valid": null,
+            "value": "g+1HCB5+GoDGTOeXGB1Mv87gfnX70au6dPyhLZgfr44GLCNhCu7azdORL7Ta/EVuPuLv+u9folKIeGhcZ79KuACC4XiwHHC3fOfOq5Al6KHyU6D/N7+K/kuNKx7BqwC7tQEj+rQzgJhveqTXk8zH33QpiclnXgs1/BJIM4Id1umU7fxxRuWUlh7OzmELhIP4FqfPTqVT6ZAgDgSNoI273SOQ7qygsGsVvn/F9/Nl4/6oZ6H98wTfmT39WInWGLAv3WFmkBFBYVc8IP8+6oZFij1AJDGcSVzdwHDu3kmcsGsEs8oou6YgRNYjFWUdHddM0n4Q26/jQ9JevT+3MdcoFw=="
+          },
+          "signature_algorithm": {
+            "name": "SHA1-RSA",
+            "oid": "1.2.840.113549.1.1.5"
+          },
+          "spki_subject_fingerprint": "a42beb19bdc7ea36c89d40ff0575b738743233deea1eb714d8c047eefdaa0f2e",
+          "subject": {
+            "common_name": [
+              "*.3amteam.com"
+            ],
+            "country": [
+              "US"
+            ],
+            "domain_component": null,
+            "email_address": [
+              "us@3amteam.com"
+            ],
+            "given_name": null,
+            "jurisdiction_country": null,
+            "jurisdiction_locality": null,
+            "jurisdiction_province": null,
+            "locality": [
+              "Torrington"
+            ],
+            "organization": [
+              "3AM LLC"
+            ],
+            "organizational_unit": [
+              "Office of the Lead Developer"
+            ],
+            "postal_code": null,
+            "province": [
+              "CT"
+            ],
+            "serial_number": null,
+            "street_address": null,
+            "surname": null
+          },
+          "subject_dn": "C=US, ST=CT, L=Torrington, O=3AM LLC, OU=Office of the Lead Developer, CN=*.3amteam.com, emailAddress=us@3amteam.com",
+          "subject_key_info": {
+            "ecdsa_public_key": {
+              "b": "",
+              "curve": "",
+              "gx": "",
+              "gy": "",
+              "length": 0,
+              "n": "",
+              "p": "",
+              "pub": "",
+              "x": "",
+              "y": ""
+            },
+            "fingerprint_sha256": "bea1371c7524254c267a3f0226b59d8cbf66293f8501d26ab862cf8a865118e0",
+            "key_algorithm": {
+              "name": "RSA"
+            },
+            "rsa_public_key": {
+              "exponent": 0,
+              "length": 0,
+              "modulus": ""
+            }
+          },
+          "tbs_fingerprint": "b006728f04af361fad85fa6fff2b79e7f0ea57a8aa6921460116cb9fe35f03e2",
+          "tbs_noct_fingerprint": "b006728f04af361fad85fa6fff2b79e7f0ea57a8aa6921460116cb9fe35f03e2",
+          "validation_level": "unknown",
+          "validity": {
+            "status": "",
+            "end": "9999-12-31T23:59:59Z",
+            "length": 9223372036,
+            "start": "2013-12-12T21:15:00Z"
+          },
+          "version": 3
+        },
+        "raw": "MIIFUDCCBDigAwIBAgIBDDANBgkqhkiG9w0BAQUFADCBwzELMAkGA1UEBhMCVVMxFDASBgNVBAgTC0Nvbm5lY3RpY3V0MRMwEQYDVQQHEwpUb3JyaW5ndG9uMRAwDgYDVQQKEwczQU0gTExDMSUwIwYDVQQLExxPZmZpY2Ugb2YgdGhlIExlYWQgRGV2ZWxvcGVyMS8wLQYDVQQDEyYzQU0gTExDIEludGVybmFsIENlcnRpZmljYXRlIEF1dGhvcml0eTEfMB0GCSqGSIb3DQEJARYQdGVhbUAzYW10ZWFtLmNvbTAgFw0xMzEyMTIyMTE1MDBaGA85OTk5MTIzMTIzNTk1OVowgZ8xCzAJBgNVBAYTAlVTMQswCQYDVQQIEwJDVDETMBEGA1UEBxMKVG9ycmluZ3RvbjEQMA4GA1UEChMHM0FNIExMQzElMCMGA1UECxMcT2ZmaWNlIG9mIHRoZSBMZWFkIERldmVsb3BlcjEWMBQGA1UEAwwNKi4zYW10ZWFtLmNvbTEdMBsGCSqGSIb3DQEJARYOdXNAM2FtdGVhbS5jb20wggIiMA0GCSqGSIb3DQEBAQUAA4ICDwAwggIKAoICAQC7O8RoRkdsiH1623PTLgSxPZ1zNTbZ291uR4UeVCvmmnzkJg7lpg3FcqE9HjhBOo9UA4HrM6Y9mAFqbutlOop4B5tAfPb1ltT9ZvXikcTPimlTQHTw42aAxPVz2XXNB9eRJ+gEHs5XVnJWjbPueGpCc83Z+SytWTDzpb2zLUoGgK5i1OyH/agImlpfEd1/fMezXDB2tMjdZk0j8pruxwARXKDGVmxlLGVIxAELak32kH9szaAjcshnCU/n32HL35X2b6+7Sao5/gXnbyhC9+ULvNGPWa45tRydmkUJAM0xag8zaQUBEO/JCV47ibJwijulgfHpCVgwggqqCx6GHUvZr3yZrHNG+kqwPgvhutFcFIQ507vJw3+ksXw6fLx4VhIPRPE2HYo6BOD6fKkSTZfL6JAEbBNFVdiFmCB90TJZfkHFbapwMLAkjsvZt7+VbmY1pR20FfWxbUkOdmlTokbWDmSL60nXSyi5jaOTg7482GrEMBBdeO25Y3VGxd7BofnSEbMTNpD3KxRWqhAm93AK93nOSi7OP1rVuq9dJN6xuAG6ymhdJNBbWv3/+IDD6hzzuq4heDYhXptgC6C3wLHtCf5wRbAgTokQfCtW1dXu+OrY5yqySrsZde0RCsobVyEfROTsFm/hcXca2QkdsZb2vwIGJDYx9rMTrHNsflzOdwIDAQABo28wbTAMBgNVHRMBAf8EAjAAMB0GA1UdDgQWBBQkGT23SFfwLgttJBv0xFHaPz5tdTALBgNVHQ8EBAMCBeAwEQYJYIZIAYb4QgEBBAQDAgZAMB4GCWCGSAGG+EIBDQQRFg94Y2EgY2VydGlmaWNhdGUwDQYJKoZIhvcNAQEFBQADggEBAIPtRwgefhqAxkznlxgdTL/O4H51+9GrunT8oS2YH6+OBiwjYQru2s3TkS+02vxFbj7i7/rvX6JSiHhoXGe/SrgAguF4sBxwt3znzquQJeih8lOg/ze/iv5LjSsewasAu7UBI/q0M4CYb3qk15PMx990KYnJZ14LNfwSSDOCHdbplO38cUbllJYezs5hC4SD+Banz06lU+mQIA4EjaCNu90jkO6soLBrFb5/xffzZeP+qGeh/fME35k9/ViJ1hiwL91hZpARQWFXPCD/PuqGRYo9QCQxnElc3cBw7t5JnLBrBLPKKLumIETWIxVlHR3XTNJ+ENuv40PSXr0/tzHXKBc=",
+        "fingerprint_sha256": "5c157070be587becb7856643c9be75ab31726a0328a88377b0093c908a53abf5",
+        "validation": null,
+        "updated_at": "2020-06-23T07:29:15.155941969Z"
+      }
+    ]
+  }
+}

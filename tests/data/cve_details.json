@@ -1,0 +1,118 @@
+{
+  "data": {
+    "items": [
+      {
+        "id": "CVE-2004-2343",
+        "references": {
+          "reference_data": [
+            {
+              "url": "http://archives.neohapsis.com/archives/bugtraq/2004-02/0043.html",
+              "name": "20040131 BUG IN APACHE HTTPD SERVER (current version 2.0.47)",
+              "refsource": "BUGTRAQ",
+              "tags": [
+                "Vendor Advisory"
+              ]
+            },
+            {
+              "url": "http://archives.neohapsis.com/archives/bugtraq/2004-02/0064.html",
+              "name": "20040202 Re: BUG IN APACHE HTTPD SERVER (current version 2.0.47)",
+              "refsource": "BUGTRAQ",
+              "tags": []
+            },
+            {
+              "url": "http://archives.neohapsis.com/archives/bugtraq/2004-02/0120.html",
+              "name": "20040204 Re: BUG IN APACHE HTTPD SERVER (current version 2.0.47)",
+              "refsource": "BUGTRAQ",
+              "tags": []
+            },
+            {
+              "url": "https://exchange.xforce.ibmcloud.com/vulnerabilities/15015",
+              "name": "apache-httpd-bypass-restriction(15015)",
+              "refsource": "XF",
+              "tags": []
+            }
+          ]
+        },
+        "description": {
+          "description_data": [
+            {
+              "lang": "en",
+              "value": "** DISPUTED ** Apache HTTP Server 2.0.47 and earlier allows local users to bypass .htaccess file restrictions, as specified in httpd.conf with directives such as Deny From All, by using an ErrorDocument directive. NOTE: the vendor has disputed this issue, since the .htaccess mechanism is only intended to restrict external web access, and a local user already has the privileges to perform the same operations without using ErrorDocument."
+            }
+          ]
+        },
+        "impact": {
+          "baseMetricV2": {
+            "cvssV2": {
+              "version": "",
+              "vectorString": "AV:L/AC:L/Au:N/C:C/I:C/A:C",
+              "accessVector": "LOCAL",
+              "accessComplexity": "LOW",
+              "authentication": "NONE",
+              "confidentialityImpact": "COMPLETE",
+              "integrityImpact": "COMPLETE",
+              "availabilityImpact": "COMPLETE",
+              "baseScore": 7.2
+            },
+            "severity": "HIGH",
+            "exploitabilityScore": 3.9,
+            "impactScore": 10,
+            "acInsufInfo": false,
+            "obtainAllPrivilege": true,
+            "obtainUserPrivilege": false,
+            "obtainOtherPrivilege": false,
+            "userInteractionRequired": false
+          },
+          "baseMetricV3": {
+            "cvssV3": {
+              "attackComplexity": "",
+              "attackVector": "",
+              "availabilityImpact": "",
+              "baseScore": 0,
+              "baseSeverity": "",
+              "confidentialityImpact": "",
+              "integrityImpact": "",
+              "privilegesRequired": "",
+              "scope": "",
+              "userInteraction": "",
+              "vectorString": "",
+              "version": ""
+            },
+            "exploitabilityScore": 0,
+            "impactScore": 0
+          }
+        },
+        "conditions": [
+          {
+            "application": "",
+            "cpe_prefix": "cpe:2.3:a:apache:http_server",
+            "hardware": "",
+            "operation_system": "",
+            "version_end_excluding": "",
+            "version_end_excluding_representation": 0,
+            "version_end_including": "2.0.47",
+            "version_end_including_representation": 1002100010471000,
+            "version_start_excluding": "",
+            "version_start_excluding_representation": 0,
+            "version_start_including": "",
+            "version_start_including_representation": 0
+          }
+        ],
+        "problemtype": {
+          "problemtype_data": [
+            {
+              "description": [
+                {
+                  "lang": "en",
+                  "value": "NVD-CWE-Other"
+                }
+              ]
+            }
+          ]
+        },
+        "publishedDate": "2004-12-31T05:00:00Z",
+        "lastModifiedDate": "2017-07-11T01:31:00Z"
+      }
+    ]
+  }
+}

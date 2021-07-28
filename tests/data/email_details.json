@@ -1,0 +1,20 @@
+{
+  "data": {
+    "total_count": 1,
+    "offset": 0,
+    "limit": 1,
+    "items": [
+      {
+        "email": "test@gmail.com",
+        "sources": [
+          {
+            "target": "www.satyavathywomensclinic.com",
+            "type": "site",
+            "last_seen": "2020-10-02T15:10:52.484411677Z"
+          }
+        ],
+        "updated_at": "2020-11-21T11:18:16.775330284Z"
+      }
+    ]
+  }
+}
