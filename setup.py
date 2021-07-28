@@ -8,10 +8,11 @@ with open('LICENSE.md') as f:
     license = f.read()
 
 setup(
-    name='spyse',
-    version='1.0.0',
+    name='spyse-python',
+    version='1.0.7',
     description='Python wrapper for spyse.com',
     long_description=readme,
+    long_description_content_type='text/markdown',
     author='Roman Romanov',
     author_email='roman.romanov@spyse.com',
     url='https://github.com/spyse-com/spyse-python',
