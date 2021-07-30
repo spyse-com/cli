@@ -1,5 +1,3 @@
-import json
-
 import requests
 from typing import List, Optional
 
