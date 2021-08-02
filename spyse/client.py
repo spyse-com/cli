@@ -292,7 +292,7 @@ class Client:
         for r in response.data.items:
             cve_list.append(CVE.from_dict(r))
 
-        return ScrollResults(response.data.items, cve_list)
+        return ScrollResults(response.data.search_id, cve_list)
 
     def get_email_details(self, email: str) -> Optional[Email]:
         """Returns details about email"""
@@ -334,7 +334,7 @@ class Client:
         for r in response.data.items:
             emails.append(Email.from_dict(r))
 
-        return ScrollResults(response.data.total_items, emails)
+        return ScrollResults(response.data.search_id, emails)
 
     def search_historical_dns(self, dns_type, domain_name: str, limit: int = MAX_LIMIT, offset: int = 0) \
             -> List[DNSHistoricalRecord]:
