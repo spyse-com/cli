@@ -80,9 +80,9 @@ class Client:
                                                     json={"search_params": query.get(), "limit": limit,
                                                           "offset": offset}).json())
 
-    def __scroll(self, endpoint, query: SearchQuery, scroll_id: Optional[str] = None) -> Response:
-        if scroll_id:
-            body = {"search_params": query.get(), "scroll_id": scroll_id}
+    def __scroll(self, endpoint, query: SearchQuery, search_id: Optional[str] = None) -> Response:
+        if search_id:
+            body = {"search_params": query.get(), "search_id": search_id}
         else:
             body = {"search_params": query.get()}
 

@@ -28,8 +28,8 @@ if total > client.SEARCH_RESULTS_LIMIT and client.get_quotas().is_scroll_search_
     scroll_id = None
     subdomains_left = total
     while subdomains_left > 0:
-        scroll_results = client.scroll_domains(q)
-        scroll_id = scroll_results.search_id
+        scroll_results = client.scroll_domains(q, search_id)
+        search_id = scroll_results.search_id
         for r in scroll_results.results:
             print(json.dumps(r, default=lambda o: o.__dict__, sort_keys=True, indent=4))
         sys.stdout.flush()
