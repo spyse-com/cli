@@ -7,9 +7,45 @@ from .search_query import SearchQuery
 
 
 class ScrollResults:
-    def __init__(self, scroll_id, results):
+    def __init__(self, scroll_id: str, results: List[object]):
         self.search_id: Optional[str] = scroll_id
         self.results: List[object] = results
+
+
+class DomainsSearchResults:
+    def __init__(self, total_items: int, results: List[Domain]):
+        self.total_items: Optional[int] = total_items
+        self.results: List[Domain] = results
+
+
+class AutonomousSystemsSearchResults:
+    def __init__(self, total_items: int, results: List[AS]):
+        self.total_items: Optional[int] = total_items
+        self.results: List[AS] = results
+
+
+class IPSearchResults:
+    def __init__(self, total_items: int, results: List[IP]):
+        self.total_items: Optional[int] = total_items
+        self.results: List[IP] = results
+
+
+class CertificatesSearchResults:
+    def __init__(self, total_items: int, results: List[Certificate]):
+        self.total_items: Optional[int] = total_items
+        self.results: List[Certificate] = results
+
+
+class CVESearchResults:
+    def __init__(self, total_items: int, results: List[CVE]):
+        self.total_items: Optional[int] = total_items
+        self.results: List[CVE] = results
+
+
+class EmailsSearchResults:
+    def __init__(self, total_items: int, results: List[Email]):
+        self.total_items: Optional[int] = total_items
+        self.results: List[Email] = results
 
 
 class Client:
@@ -59,7 +95,8 @@ class Client:
 
         return response.data.total_items
 
-    def search_autonomous_systems(self, query: SearchQuery, limit: int = MAX_LIMIT, offset: int = 0) -> List[AS]:
+    def search_autonomous_systems(self, query: SearchQuery, limit: int = MAX_LIMIT,
+                                  offset: int = 0) -> AutonomousSystemsSearchResults:
         """
         Returns a list of autonomous systems that matched the search query.
         Allows getting only the first 10,000 results.
@@ -72,7 +109,7 @@ class Client:
         for r in response.data.items:
             as_list.append(AS.from_dict(r))
 
-        return as_list
+        return AutonomousSystemsSearchResults(response.data.total_items, as_list)
 
     def scroll_autonomous_systems(self, query: SearchQuery, scroll_id: str = None) -> ScrollResults:
         """
@@ -95,7 +132,7 @@ class Client:
 
         return Domain.from_dict(response.data.items[0]) if len(response.data.items) > 0 else None
 
-    def search_domains(self, query: SearchQuery, limit: int = MAX_LIMIT, offset: int = 0) -> List[Domain]:
+    def search_domains(self, query: SearchQuery, limit: int = MAX_LIMIT, offset: int = 0) -> DomainsSearchResults:
         """
         Returns a list of domains that matched the search query.
         Allows getting only the first 10,000 results.
@@ -107,7 +144,7 @@ class Client:
         for r in response.data.items:
             domains.append(Domain.from_dict(r))
 
-        return domains
+        return DomainsSearchResults(response.data.total_items, domains)
 
     def count_domains(self, query: SearchQuery):
         """Returns the precise number of search results that matched the search query."""
@@ -137,7 +174,7 @@ class Client:
 
         return IP.from_dict(response.data.items[0]) if len(response.data.items) > 0 else None
 
-    def search_ip(self, query: SearchQuery, limit: int = MAX_LIMIT, offset: int = 0) -> List[IP]:
+    def search_ip(self, query: SearchQuery, limit: int = MAX_LIMIT, offset: int = 0) -> IPSearchResults:
         """
         Returns a list of IPv4 hosts that matched the search query.
         Allows getting only the first 10,000 results.
@@ -149,7 +186,7 @@ class Client:
         for r in response.data.items:
             ips.append(IP.from_dict(r))
 
-        return ips
+        return IPSearchResults(response.data.total_items, ips)
 
     def count_ip(self, query: SearchQuery) -> int:
         """Returns the precise number of search results that matched the search query."""
@@ -179,7 +216,8 @@ class Client:
 
         return Certificate.from_dict(response.data.items[0]) if len(response.data.items) > 0 else None
 
-    def search_certificate(self, query: SearchQuery, limit: int = MAX_LIMIT, offset: int = 0) -> List[Certificate]:
+    def search_certificate(self, query: SearchQuery, limit: int = MAX_LIMIT,
+                           offset: int = 0) -> CertificatesSearchResults:
         """
         Returns a list of SSL/TLS certificate hosts that matched the search query.
         Allows getting only the first 10,000 results.
@@ -191,7 +229,7 @@ class Client:
         for r in response.data.items:
             certs.append(Certificate.from_dict(r))
 
-        return certs
+        return CertificatesSearchResults(response.data.total_items, certs)
 
     def count_certificate(self, query: SearchQuery) -> int:
         """Returns the precise number of search results that matched the search query."""
@@ -221,7 +259,7 @@ class Client:
 
         return CVE.from_dict(response.data.items[0]) if len(response.data.items) > 0 else None
 
-    def search_cve(self, query: SearchQuery, limit: int = MAX_LIMIT, offset: int = 0) -> List[CVE]:
+    def search_cve(self, query: SearchQuery, limit: int = MAX_LIMIT, offset: int = 0) -> CVESearchResults:
         """
         Returns a list of CVE that matched the search query.
         Allows getting only the first 10,000 results.
@@ -233,7 +271,7 @@ class Client:
         for r in response.data.items:
             cve_list.append(CVE.from_dict(r))
 
-        return cve_list
+        return CVESearchResults(response.data.total_items, cve_list)
 
     def count_cve(self, query: SearchQuery) -> int:
         """Returns the precise number of search results that matched the search query."""
@@ -263,7 +301,7 @@ class Client:
 
         return Email.from_dict(response.data.items[0]) if len(response.data.items) > 0 else None
 
-    def search_emails(self, query: SearchQuery, limit: int = MAX_LIMIT, offset: int = 0) -> List[Email]:
+    def search_emails(self, query: SearchQuery, limit: int = MAX_LIMIT, offset: int = 0) -> EmailsSearchResults:
         """
         Returns a list of emails that matched the search query.
         Allows getting only the first 10,000 results.
@@ -275,7 +313,7 @@ class Client:
         for r in response.data.items:
             emails.append(Email.from_dict(r))
 
-        return emails
+        return EmailsSearchResults(response.data.total_items, emails)
 
     def count_emails(self, query: SearchQuery) -> int:
         """Returns the precise number of search results that matched the search query."""

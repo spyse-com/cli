@@ -39,7 +39,7 @@ else:
     offset = 0
     subdomains = []
     while offset <= total - client.MAX_LIMIT or offset == 0:
-        for r in client.search_domains(q, client.MAX_LIMIT, offset):
+        for r in client.search_domains(q, client.MAX_LIMIT, offset).results:
             print(json.dumps(r, default=lambda o: o.__dict__, sort_keys=True, indent=4))
         offset += client.MAX_LIMIT
         sys.stdout.flush()
