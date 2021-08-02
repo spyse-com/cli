@@ -101,7 +101,7 @@ q.append_param(QueryParam(DomainSearchParams.is_ptr, Operators.equals, "False"))
 # Next, you can use the query to run search, count or scroll methods
 c = Client("your-api-token-here")
 total_count = c.count_domains(q)
-search_results = c.search_domains(q)
+search_results = c.search_domains(q).results
 scroll_results = c.scroll_domains(q).results
 ```
 
@@ -124,7 +124,7 @@ q.append_param(QueryParam(IPSearchParams.port_technology_name, Operators.contain
 # Next, you can use the query to run search, count or scroll methods
 c = Client("your-api-token-here")
 total_count = c.count_ip(q)
-search_results = c.search_ip(q)
+search_results = c.search_ip(q).results
 scroll_results = c.scroll_ip(q).results
 ```
 

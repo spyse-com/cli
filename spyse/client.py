@@ -6,10 +6,60 @@ from .response import Response
 from .search_query import SearchQuery
 
 
-class ScrollResults:
-    def __init__(self, scroll_id, results):
-        self.search_id: Optional[str] = scroll_id
-        self.results: List[object] = results
+class DomainsSearchResults:
+    def __init__(self, results: List[Domain], total_items: int = None, search_id: str = None):
+        self.total_items: Optional[int] = total_items
+        self.search_id: Optional[str] = search_id
+        self.results: List[Domain] = results
+
+
+class AutonomousSystemsSearchResults:
+    def __init__(self, results: List[AS], total_items: int = None, search_id: str = None):
+        self.total_items: Optional[int] = total_items
+        self.search_id: Optional[str] = search_id
+        self.results: List[AS] = results
+
+
+class IPSearchResults:
+    def __init__(self, results: List[IP], total_items: int = None, search_id: str = None):
+        self.total_items: Optional[int] = total_items
+        self.search_id: Optional[str] = search_id
+        self.results: List[IP] = results
+
+
+class CertificatesSearchResults:
+    def __init__(self, results: List[Certificate], total_items: int = None, search_id: str = None):
+        self.total_items: Optional[int] = total_items
+        self.search_id: Optional[str] = search_id
+        self.results: List[Certificate] = results
+
+
+class CVESearchResults:
+    def __init__(self, results: List[CVE], total_items: int = None, search_id: str = None):
+        self.total_items: Optional[int] = total_items
+        self.search_id: Optional[str] = search_id
+        self.results: List[CVE] = results
+
+
+class EmailsSearchResults:
+    def __init__(self, results: List[Email], total_items: int = None, search_id: str = None):
+        self.total_items: Optional[int] = total_items
+        self.search_id: Optional[str] = search_id
+        self.results: List[Email] = results
+
+
+class HistoricalDNSSearchResults:
+    def __init__(self, results: List[DNSHistoricalRecord], total_items: int = None, search_id: str = None):
+        self.total_items: Optional[int] = total_items
+        self.search_id: Optional[str] = search_id
+        self.results: List[DNSHistoricalRecord] = results
+
+
+class HistoricalWHOISSearchResults:
+    def __init__(self, results: List[WHOISHistoricalRecord], total_items: int = None, search_id: str = None):
+        self.total_items: Optional[int] = total_items
+        self.search_id: Optional[str] = search_id
+        self.results: List[WHOISHistoricalRecord] = results
 
 
 class Client:
@@ -59,7 +109,8 @@ class Client:
 
         return response.data.total_items
 
-    def search_autonomous_systems(self, query: SearchQuery, limit: int = MAX_LIMIT, offset: int = 0) -> List[AS]:
+    def search_autonomous_systems(self, query: SearchQuery, limit: int = MAX_LIMIT,
+                                  offset: int = 0) -> AutonomousSystemsSearchResults:
         """
         Returns a list of autonomous systems that matched the search query.
         Allows getting only the first 10,000 results.
@@ -72,9 +123,9 @@ class Client:
         for r in response.data.items:
             as_list.append(AS.from_dict(r))
 
-        return as_list
+        return AutonomousSystemsSearchResults(as_list, response.data.total_items)
 
-    def scroll_autonomous_systems(self, query: SearchQuery, scroll_id: str = None) -> ScrollResults:
+    def scroll_autonomous_systems(self, query: SearchQuery, scroll_id: str = None) -> AutonomousSystemsSearchResults:
         """
         Returns a list of autonomous systems that matched the search query.
         Allows getting all the results but requires a Spyse Pro subscription
@@ -86,7 +137,7 @@ class Client:
         for r in response.data.items:
             as_list.append(AS.from_dict(r))
 
-        return ScrollResults(response.data.search_id, as_list)
+        return AutonomousSystemsSearchResults(as_list, search_id=response.data.search_id)
 
     def get_domain_details(self, domain_name: str) -> Optional[Domain]:
         """Returns details about domain"""
@@ -95,7 +146,7 @@ class Client:
 
         return Domain.from_dict(response.data.items[0]) if len(response.data.items) > 0 else None
 
-    def search_domains(self, query: SearchQuery, limit: int = MAX_LIMIT, offset: int = 0) -> List[Domain]:
+    def search_domains(self, query: SearchQuery, limit: int = MAX_LIMIT, offset: int = 0) -> DomainsSearchResults:
         """
         Returns a list of domains that matched the search query.
         Allows getting only the first 10,000 results.
@@ -107,7 +158,7 @@ class Client:
         for r in response.data.items:
             domains.append(Domain.from_dict(r))
 
-        return domains
+        return DomainsSearchResults(domains, response.data.total_items)
 
     def count_domains(self, query: SearchQuery):
         """Returns the precise number of search results that matched the search query."""
@@ -116,7 +167,7 @@ class Client:
 
         return response.data.total_items
 
-    def scroll_domains(self, query: SearchQuery, scroll_id: str = None) -> ScrollResults:
+    def scroll_domains(self, query: SearchQuery, scroll_id: str = None) -> DomainsSearchResults:
         """
         Returns a list of domains that matched the search query.
         Allows getting all the results but requires a Spyse Pro subscription
@@ -128,7 +179,7 @@ class Client:
         for r in response.data.items:
             domains.append(Domain.from_dict(r))
 
-        return ScrollResults(response.data.search_id, domains)
+        return DomainsSearchResults(domains, search_id=response.data.search_id)
 
     def get_ip_details(self, ip: str) -> Optional[IP]:
         """Returns details about IP"""
@@ -137,7 +188,7 @@ class Client:
 
         return IP.from_dict(response.data.items[0]) if len(response.data.items) > 0 else None
 
-    def search_ip(self, query: SearchQuery, limit: int = MAX_LIMIT, offset: int = 0) -> List[IP]:
+    def search_ip(self, query: SearchQuery, limit: int = MAX_LIMIT, offset: int = 0) -> IPSearchResults:
         """
         Returns a list of IPv4 hosts that matched the search query.
         Allows getting only the first 10,000 results.
@@ -149,7 +200,7 @@ class Client:
         for r in response.data.items:
             ips.append(IP.from_dict(r))
 
-        return ips
+        return IPSearchResults(ips, response.data.total_items)
 
     def count_ip(self, query: SearchQuery) -> int:
         """Returns the precise number of search results that matched the search query."""
@@ -158,7 +209,7 @@ class Client:
 
         return response.data.total_items
 
-    def scroll_ip(self, query: SearchQuery, scroll_id: str = None) -> ScrollResults:
+    def scroll_ip(self, query: SearchQuery, scroll_id: str = None) -> IPSearchResults:
         """
         Returns a list of IPv4 hosts that matched the search query.
         Allows getting all the results but requires a Spyse Pro subscription
@@ -170,7 +221,7 @@ class Client:
         for r in response.data.items:
             ips.append(IP.from_dict(r))
 
-        return ScrollResults(response.data.search_id, ips)
+        return IPSearchResults(ips, search_id=response.data.search_id)
 
     def get_certificate_details(self, fingerprint_sha256: str) -> Optional[Certificate]:
         """Returns details about SSL/TLS certificate"""
@@ -179,7 +230,8 @@ class Client:
 
         return Certificate.from_dict(response.data.items[0]) if len(response.data.items) > 0 else None
 
-    def search_certificate(self, query: SearchQuery, limit: int = MAX_LIMIT, offset: int = 0) -> List[Certificate]:
+    def search_certificate(self, query: SearchQuery, limit: int = MAX_LIMIT,
+                           offset: int = 0) -> CertificatesSearchResults:
         """
         Returns a list of SSL/TLS certificate hosts that matched the search query.
         Allows getting only the first 10,000 results.
@@ -191,7 +243,7 @@ class Client:
         for r in response.data.items:
             certs.append(Certificate.from_dict(r))
 
-        return certs
+        return CertificatesSearchResults(certs, response.data.total_items)
 
     def count_certificate(self, query: SearchQuery) -> int:
         """Returns the precise number of search results that matched the search query."""
@@ -200,7 +252,7 @@ class Client:
 
         return response.data.total_items
 
-    def scroll_certificate(self, query: SearchQuery, scroll_id: str = None) -> ScrollResults:
+    def scroll_certificate(self, query: SearchQuery, scroll_id: str = None) -> CertificatesSearchResults:
         """
         Returns a list of SSL/TLS certificates that matched the search query.
         Allows getting all the results but requires a Spyse Pro subscription
@@ -212,7 +264,7 @@ class Client:
         for r in response.data.items:
             certs.append(Certificate.from_dict(r))
 
-        return ScrollResults(response.data.search_id, certs)
+        return CertificatesSearchResults(certs, search_id=response.data.search_id)
 
     def get_cve_details(self, cve_id: str) -> Optional[CVE]:
         """Returns details about CVE"""
@@ -221,7 +273,7 @@ class Client:
 
         return CVE.from_dict(response.data.items[0]) if len(response.data.items) > 0 else None
 
-    def search_cve(self, query: SearchQuery, limit: int = MAX_LIMIT, offset: int = 0) -> List[CVE]:
+    def search_cve(self, query: SearchQuery, limit: int = MAX_LIMIT, offset: int = 0) -> CVESearchResults:
         """
         Returns a list of CVE that matched the search query.
         Allows getting only the first 10,000 results.
@@ -233,7 +285,7 @@ class Client:
         for r in response.data.items:
             cve_list.append(CVE.from_dict(r))
 
-        return cve_list
+        return CVESearchResults(cve_list, response.data.total_items)
 
     def count_cve(self, query: SearchQuery) -> int:
         """Returns the precise number of search results that matched the search query."""
@@ -242,7 +294,7 @@ class Client:
 
         return response.data.total_items
 
-    def scroll_cve(self, query: SearchQuery, scroll_id: str = None) -> ScrollResults:
+    def scroll_cve(self, query: SearchQuery, scroll_id: str = None) -> CVESearchResults:
         """
         Returns a list of CVEs that matched the search query.
         Allows getting all the results but requires a Spyse Pro subscription
@@ -254,7 +306,7 @@ class Client:
         for r in response.data.items:
             cve_list.append(CVE.from_dict(r))
 
-        return ScrollResults(response.data.items, cve_list)
+        return CVESearchResults(cve_list, search_id=response.data.search_id)
 
     def get_email_details(self, email: str) -> Optional[Email]:
         """Returns details about email"""
@@ -263,7 +315,7 @@ class Client:
 
         return Email.from_dict(response.data.items[0]) if len(response.data.items) > 0 else None
 
-    def search_emails(self, query: SearchQuery, limit: int = MAX_LIMIT, offset: int = 0) -> List[Email]:
+    def search_emails(self, query: SearchQuery, limit: int = MAX_LIMIT, offset: int = 0) -> EmailsSearchResults:
         """
         Returns a list of emails that matched the search query.
         Allows getting only the first 10,000 results.
@@ -275,7 +327,7 @@ class Client:
         for r in response.data.items:
             emails.append(Email.from_dict(r))
 
-        return emails
+        return EmailsSearchResults(emails, response.data.total_items)
 
     def count_emails(self, query: SearchQuery) -> int:
         """Returns the precise number of search results that matched the search query."""
@@ -284,7 +336,7 @@ class Client:
 
         return response.data.total_items
 
-    def scroll_emails(self, query: SearchQuery, scroll_id: str = None) -> ScrollResults:
+    def scroll_emails(self, query: SearchQuery, scroll_id: str = None) -> EmailsSearchResults:
         """
         Returns a list of emails that matched the search query.
         Allows getting all the results but requires a Spyse Pro subscription
@@ -296,10 +348,10 @@ class Client:
         for r in response.data.items:
             emails.append(Email.from_dict(r))
 
-        return ScrollResults(response.data.total_items, emails)
+        return EmailsSearchResults(emails, search_id=response.data.search_id)
 
     def search_historical_dns(self, dns_type, domain_name: str, limit: int = MAX_LIMIT, offset: int = 0) \
-            -> List[DNSHistoricalRecord]:
+            -> HistoricalDNSSearchResults:
         """
         Returns the historical DNS records about the given domain name.
         """
@@ -310,10 +362,10 @@ class Client:
         for r in response.data.items:
             records.append(DNSHistoricalRecord.from_dict(r))
 
-        return records
+        return HistoricalDNSSearchResults(records, response.data.total_items)
 
     def search_historical_whois(self, domain_name: str, limit: int = MAX_LIMIT, offset: int = 0) \
-            -> List[WHOISHistoricalRecord]:
+            -> HistoricalWHOISSearchResults:
         """
         Returns the historical WHOIS records for the given domain name.
         """
@@ -324,4 +376,4 @@ class Client:
         for r in response.data.items:
             records.append(WHOISHistoricalRecord.from_dict(r))
 
-        return records
+        return HistoricalWHOISSearchResults(records, response.data.total_items)
