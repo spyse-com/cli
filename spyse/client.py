@@ -48,6 +48,20 @@ class EmailsSearchResults:
         self.results: List[Email] = results
 
 
+class HistoricalDNSSearchResults:
+    def __init__(self, results: List[DNSHistoricalRecord], total_items: int = None, search_id: str = None):
+        self.total_items: Optional[int] = total_items
+        self.search_id: Optional[str] = search_id
+        self.results: List[DNSHistoricalRecord] = results
+
+
+class HistoricalWHOISSearchResults:
+    def __init__(self, results: List[WHOISHistoricalRecord], total_items: int = None, search_id: str = None):
+        self.total_items: Optional[int] = total_items
+        self.search_id: Optional[str] = search_id
+        self.results: List[WHOISHistoricalRecord] = results
+
+
 class Client:
     DEFAULT_BASE_URL = 'https://api.spyse.com/v4/data'
     MAX_LIMIT = 100
@@ -337,7 +351,7 @@ class Client:
         return EmailsSearchResults(emails, search_id=response.data.search_id)
 
     def search_historical_dns(self, dns_type, domain_name: str, limit: int = MAX_LIMIT, offset: int = 0) \
-            -> List[DNSHistoricalRecord]:
+            -> HistoricalDNSSearchResults:
         """
         Returns the historical DNS records about the given domain name.
         """
@@ -348,10 +362,10 @@ class Client:
         for r in response.data.items:
             records.append(DNSHistoricalRecord.from_dict(r))
 
-        return records
+        return HistoricalDNSSearchResults(records, response.data.total_items)
 
     def search_historical_whois(self, domain_name: str, limit: int = MAX_LIMIT, offset: int = 0) \
-            -> List[WHOISHistoricalRecord]:
+            -> HistoricalWHOISSearchResults:
         """
         Returns the historical WHOIS records for the given domain name.
         """
@@ -362,4 +376,4 @@ class Client:
         for r in response.data.items:
             records.append(WHOISHistoricalRecord.from_dict(r))
 
-        return records
+        return HistoricalWHOISSearchResults(records, response.data.total_items)
