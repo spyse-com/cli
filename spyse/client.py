@@ -89,7 +89,7 @@ class Client:
 
         return Response.from_dict(self.session.post(endpoint, json=body).json())
 
-    def change_user_agent(self, s: str):
+    def set_user_agent(self, s: str):
         self.session.headers.update({'User-Agent': s})
 
     def get_quotas(self) -> Optional[Account]:
