@@ -151,7 +151,7 @@ def reverse_adsense():
 
 
 @cli.command(short_help="Find all domains sharing the same iTunes app ID")
-def reverse_itunes(short_help=""):
+def reverse_itunes():
     def f(s: str):
         q = SearchQuery()
         q.append_param(QueryParam(DomainSearchParams.http_extract_tracker_apple_itunes_app, Operators.equals,
