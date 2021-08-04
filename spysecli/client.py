@@ -19,7 +19,6 @@ class APIClient:
         callback_f(self.client.get_ip_details(ip))
 
     def fetch_account(self, callback_f):
-        self.requests_done += 1
         callback_f(self.client.get_quotas())
 
     def fetch_email(self, email: str, callback_f):

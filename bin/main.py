@@ -63,7 +63,7 @@ def reverse_ip():
         net = parser.ipv4_to_network(s)
         q = SearchQuery()
 
-        if "/" in ip:
+        if "/" in s:
             for address in net:
                 q.append_param(QueryParam(DomainSearchParams.dns_a, Operators.equals, str(address)))
         else:
