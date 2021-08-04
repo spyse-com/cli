@@ -31,7 +31,7 @@ def cli(api_token, output_format):
         api_token = os.getenv("SPYSE_API_TOKEN")
     elif not api_token and not os.getenv("SPYSE_API_TOKEN"):
         logger.error("Spyse API Token must be specified.\n"
-                     "Set flag: --api_token=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\n"
+                     "Set flag: spysecli --api_token=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx task\n"
                      "or set env variable: export SPYSE_API_TOKEN=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")
         raise click.Abort()
 

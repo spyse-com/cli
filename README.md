@@ -53,13 +53,13 @@ Custom Internet-wide assets search:
 ### Using Docker:
 ```shell
 docker build -t spysecli .
-echo "tesla.com" | docker run --interactive spysecli subdomains --api_token=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+echo "tesla.com" | docker run --interactive spysecli --api_token=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx subdomains
 ```
 
 ### Using pip
 ```bash
 pip3 install spysecli
-spysecli -h --api_token=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+spysecli --api_token=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -h 
 
 # API token also can be read from environment
 export SPYSE_API_KEY=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
