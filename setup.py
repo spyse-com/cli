@@ -18,7 +18,7 @@ setup(name='spysecli',
       url='https://github.com/spyse-com/spyse-cli',
       packages=find_packages(exclude=('tests', 'examples')),
       entry_points={
-          'console_scripts': ['spysecli=bin.main:main'],
+          'console_scripts': ['spysecli=bin.main:cli'],
       },
       install_requires=['spyse-python~=2.0.1', 'loguru~=0.5.3', 'validators~=0.18.2', 'click~=8.0.1']
       )
