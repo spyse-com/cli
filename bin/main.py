@@ -134,7 +134,7 @@ def reverse_ptr():
         q = SearchQuery()
         q.append_param(QueryParam(IPSearchParams.ptr, Operators.equals, parser.extract_domain_name(s)))
 
-        client.fetch_domains(q, printer.domain)
+        client.fetch_ips(q, printer.domain)
 
     do(f)
 
