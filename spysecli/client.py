@@ -11,18 +11,23 @@ class APIClient:
         self.requests_done = 0
 
     def fetch_domain(self, domain_name: str, callback_f):
+        self.requests_done += 1
         callback_f(self.client.get_domain_details(domain_name))
 
     def fetch_ip(self, ip: str, callback_f):
+        self.requests_done += 1
         callback_f(self.client.get_ip_details(ip))
 
     def fetch_account(self, callback_f):
+        self.requests_done += 1
         callback_f(self.client.get_quotas())
 
     def fetch_email(self, email: str, callback_f):
+        self.requests_done += 1
         callback_f(self.client.get_email_details(email))
 
     def fetch_autonomous_system(self, asn: int, callback_f):
+        self.requests_done += 1
         callback_f(self.client.get_autonomous_system_details(asn))
 
     def fetch_domains(self, q: SearchQuery, callback_f, limit=None):
