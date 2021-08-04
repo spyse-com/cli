@@ -277,7 +277,7 @@ def reverse_email():
     def f(s: str):
         q = SearchQuery()
         q.append_param(QueryParam(DomainSearchParams.http_extract_email, Operators.equals, parser.extract_email(s)))
-        client.fetch_domains(q, printer.email)
+        client.fetch_domains(q, printer.domain)
 
     do(f)
 
