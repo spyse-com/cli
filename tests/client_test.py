@@ -1,7 +1,7 @@
 import unittest
 import responses
 
-from spyse import Client
+from spyse import Client, SearchQuery, QueryParam, ASSearchParams, Operators
 
 
 class TestSpyse(unittest.TestCase):
@@ -174,12 +174,74 @@ class TestSpyse(unittest.TestCase):
         })
 
         final = self.client.get_autonomous_system_details(15169)
-
         self.assertEqual(final.asn, 1)
         self.assertEqual(final.as_org, "LVLT-1")
         self.assertEqual(final.ipv4_prefixes[0].cidr, "4.34.12.0/23")
         self.assertEqual(final.ipv4_prefixes[0].isp, "Level 3 Communications")
         self.assertEqual(final.ipv6_prefixes, None)
+
+    @responses.activate
+    def test_count_autonomous_systems(self):
+        q = SearchQuery()
+        q.append_param(QueryParam(ASSearchParams.domain, Operators.equals, 'google.com'))
+
+        f = open("data/count.json")
+        fixture = f.read()
+        f.close()
+
+        responses.add(**{
+            'method': responses.POST,
+            'url': 'https://api.spyse.com/v4/data/as/search/count',
+            'body': fixture,
+            'status': 200,
+            'content_type': 'application/json',
+        })
+        final = self.client.count_autonomous_systems(q)
+        self.assertEqual(final, 1)
+
+    @responses.activate
+    def test_search_autonomous_systems(self):
+        q = SearchQuery()
+        q.append_param(QueryParam(ASSearchParams.asn, Operators.equals, "1"))
+
+        f = open("data/as_details.json")
+        fixture = f.read()
+        f.close()
+
+        responses.add(**{
+            'method': responses.POST,
+            'url': 'https://api.spyse.com/v4/data/as/search',
+            'body': fixture,
+            'status': 200,
+            'content_type': 'application/json',
+        })
+
+        final = self.client.search_autonomous_systems(q)
+
+        self.assertEqual(final[0].asn, 1)
+        self.assertEqual(final[0].as_org, "LVLT-1")
+        self.assertEqual(final[0].ipv4_prefixes[0].cidr, "4.34.12.0/23")
+        self.assertEqual(final[0].ipv4_prefixes[0].isp, "Level 3 Communications")
+        self.assertEqual(final[0].ipv6_prefixes, None)
+
+    @responses.activate
+    def test_scroll_autonomous_systems(self):
+        q = SearchQuery()
+        q.append_param(QueryParam(ASSearchParams.asn, Operators.equals, "1"))
+
+        f = open("data/as_details.json")
+        fixture = f.read()
+        f.close()
+
+        responses.add(**{
+            'method': responses.POST,
+            'url': 'https://api.spyse.com/v4/data/as/scroll/search',
+            'body': fixture,
+            'status': 200,
+            'content_type': 'application/json',
+        })
+
+        final = self.client.scroll_autonomous_systems(q)
 
     @responses.activate
     def test_get_email(self):
