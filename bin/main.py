@@ -121,8 +121,7 @@ def reverse_ns():
 def reverse_mx():
     def f(s: str):
         q = SearchQuery()
-        q.append_param(QueryParam(DomainSearchParams.dns_mx, Operators.equals, "." + parser.extract_domain_name(s)))
-
+        q.append_param(QueryParam(DomainSearchParams.dns_mx, Operators.equals, parser.extract_domain_name(s)))
         client.fetch_domains(q, printer.domain)
 
     do(f)
