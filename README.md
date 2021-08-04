@@ -340,5 +340,5 @@ Use [API docs](https://spyse-dev.readme.io/reference/ips#ip_search) and [Spyse A
  to craft your own request.
 ```shell
 # Command example:
-echo '{"search_params":[{"open_port":{"operator":"eq","value":"200"}}]}' | spysecli search-domains
+echo '{"search_params":[{"open_port":{"operator":"eq","value":"200"}}]}' | spysecli search-ip
 ```
