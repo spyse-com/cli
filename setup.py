@@ -20,5 +20,5 @@ setup(name='spysecli',
       entry_points={
           'console_scripts': ['spysecli=bin.main:main'],
       },
-      install_requires=['spyse-python~=2.0.1', 'loguru~=0.5.3', 'validators~=0.18.2, click~=8.0.1']
+      install_requires=['spyse-python~=2.0.1', 'loguru~=0.5.3', 'validators~=0.18.2', 'click~=8.0.1']
       )
