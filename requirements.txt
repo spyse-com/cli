@@ -1,0 +1,4 @@
+loguru~=0.5.3
+validators~=0.18.2
+spyse-python~=2.0.1
+click~=8.0.1
