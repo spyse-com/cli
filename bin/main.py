@@ -175,7 +175,7 @@ def search_domains():
 def search_ip():
     def f(s: str):
         q = parser.extract_search_query(s)
-        client.fetch_ip(q, printer.ip)
+        client.fetch_ips(q, printer.ip)
 
     do(f)
 
