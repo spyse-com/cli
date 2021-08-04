@@ -38,10 +38,11 @@ class APIClient:
         self.__fetch(q, self.client.count_ip, self.client.search_ip, self.client.scroll_ip, callback_f, limit)
 
     def fetch_dns_history(self, domain: str, dns_type: str, callback_f):
-        callback_f(self.client.search_historical_dns(dns_type, domain))
+        self.__fetch_historical_dns(domain, dns_type, callback_f)
 
     def fetch_whois_history(self, domain: str, callback_f):
-        callback_f(self.client.search_historical_whois(domain))
+        self.__fetch_historical_whois(domain, callback_f)
+
 
     def __fetch(self, q: SearchQuery, count_func, search_func, scroll_func, print_func, limit=None):
         total = count_func(q)
@@ -82,6 +83,44 @@ class APIClient:
 
             for r in search_results.results:
                 print_func(r)
+
+            n_fetched_results += len(search_results.results)
+            if n_fetched_results == search_results.total_items:
+                break
+
+            if limit and n_fetched_results >= limit:
+                break
+            offset += self.client.MAX_LIMIT
+            sys.stdout.flush()
+
+    def __fetch_historical_dns(self, domain: str, dns_type: str, callback_f, limit=None):
+        n_fetched_results = 0
+        offset = 0
+        while True:
+            search_results = self.client.search_historical_dns(dns_type, domain, self.client.MAX_LIMIT, offset)
+            self.requests_done += 1
+
+            for r in search_results.results:
+                callback_f(r)
+
+            n_fetched_results += len(search_results.results)
+            if n_fetched_results == search_results.total_items:
+                break
+
+            if limit and n_fetched_results >= limit:
+                break
+            offset += self.client.MAX_LIMIT
+            sys.stdout.flush()
+
+    def __fetch_historical_whois(self, domain: str, callback_f, limit=None):
+        n_fetched_results = 0
+        offset = 0
+        while True:
+            search_results = self.client.search_historical_whois(domain, self.client.MAX_LIMIT, offset)
+            self.requests_done += 1
+
+            for r in search_results.results:
+                callback_f(r)
 
             n_fetched_results += len(search_results.results)
             if n_fetched_results == search_results.total_items:
