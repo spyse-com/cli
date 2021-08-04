@@ -342,11 +342,3 @@ Use [API docs](https://spyse-dev.readme.io/reference/ips#ip_search) and [Spyse A
 # Command example:
 echo '{"search_params":[{"open_port":{"operator":"eq","value":"200"}}]}' | spysecli search-domains
 ```
-
-
-
-
-## Planned features
-- [ ] CVE lookup
-- [ ] CIDR lookup
-- [ ] Emails lookup
