@@ -1,7 +1,7 @@
 # Spyse CLI
 
 The official command-line client for [spyse.com](https://spyse.com/).
-> **_NOTE:_**  This tool is currently in the early stage betta and shouldn't be used in production.
+> **_NOTE:_**  This tool is currently in the early stage beta and shouldn't be used in production.
 > 
 > Your feedback and suggestions are highly appreciated.
 ## Supported Features
