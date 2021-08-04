@@ -57,9 +57,10 @@ class InputParser:
 
         return s.replace("https://", "").replace("http://", "").split("/")[0]
 
-    def extract_search_query(self, s: str):
+    def extract_search_query(self, s: str) -> SearchQuery:
         try:
             q = SearchQuery()
             q.query = json.loads(s).get("search_params")
+            return q
         except:
             raise ValueError(f'"{s}" is not a valid search query')
