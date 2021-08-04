@@ -8,6 +8,7 @@ class APIClient:
 
     def __init__(self, api_token: str):
         self.client = Client(api_token)
+        self.client.set_user_agent("spysecli")
         self.requests_done = 0
 
     def fetch_domain(self, domain_name: str, callback_f):
