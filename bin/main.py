@@ -1,10 +1,12 @@
+import time
+
 import click
 import os
 import sys
 from loguru import logger
 
 from spysecli import Printer, APIClient, InputParser
-from spyse import SearchQuery, QueryParam, DomainSearchParams, IPSearchParams, Operators
+from spyse import SearchQuery, QueryParam, DomainSearchParams, IPSearchParams, Operators, Account
 
 client: APIClient
 printer: Printer
@@ -37,6 +39,11 @@ def cli(api_token, output_format):
     client = APIClient(api_token)
     printer = Printer(output_format)
     parser = InputParser()
+
+    def f(account: Account):
+        logger.info(f'API requests: {account.api_requests_remaining}/{account.api_requests_limit}')
+
+    client.fetch_account(f)
     pass
 
 
@@ -278,6 +285,8 @@ def reverse_email():
 
 @cli.result_callback()
 def process_result(result, **kwargs):
+    time.sleep(0.1)
+    sys.stdout.flush()
     logger.info(f'Spent {client.requests_done} API requests')
 
 
