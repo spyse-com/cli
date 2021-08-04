@@ -155,7 +155,7 @@ def reverse_itunes(short_help=""):
     def f(s: str):
         q = SearchQuery()
         q.append_param(QueryParam(DomainSearchParams.http_extract_tracker_apple_itunes_app, Operators.equals,
-                                  "." + parser.extract_itunes_id(s)))
+                                  parser.extract_itunes_id(s)))
 
         client.fetch_domains(q, printer.domain)
 
