@@ -178,7 +178,7 @@ Shows which IPv4 hosts are using given PTR record
 
 ```shell
 # Command example:
-echo "google.com" | spyse reverse-ptr
+echo "google.com" | spysecli reverse-ptr
 
 # Examples of valid input lines:
 domain.com
@@ -189,7 +189,7 @@ Find all domains sharing the same AdSense ID
 
 ```shell
 # Command example:
-echo "1234567891234567" | spyse reverse-adsense
+echo "1234567891234567" | spysecli reverse-adsense
 
 # Examples of valid input lines:
 pub-1234567891234567
@@ -201,7 +201,7 @@ Find all domains sharing the same iTunes app ID
 
 ```shell
 # Command example:
-echo "1188352635" | spyse reverse-itunes
+echo "1188352635" | spysecli reverse-itunes
 
 # Examples of valid input lines:
 1188352635
@@ -212,7 +212,7 @@ Find all domains sharing the same Google Play app ID
 
 ```shell
 # Command example:
-echo "google.com" | spyse reverse-google-play
+echo "google.com" | spysecli reverse-google-play
 
 # Examples of valid input lines:
 domain.com
@@ -223,7 +223,7 @@ Find all domains sharing the same Google Analytics ID
 
 ```shell
 # Command example:
-echo "UA-12345-12" | spyse reverse-google-analytics
+echo "UA-12345-12" | spysecli reverse-google-analytics
 
 # Examples of valid input lines:
 UA-12345-12
@@ -234,7 +234,7 @@ Find all domains sharing the same Google site verification code
 
 ```shell
 # Command example:
-echo "rXOxyZounnZasA8Z7oaD3c14JdjS9aKSWvsR1EbUSIQ" | spyse reverse-google-site-verification
+echo "rXOxyZounnZasA8Z7oaD3c14JdjS9aKSWvsR1EbUSIQ" | spysecli reverse-google-site-verification
 
 # Examples of valid input lines:
 rXOxyZounnZasA8Z7oaD3c14JdjS9aKSWvsR1EbUSIQ
@@ -245,7 +245,7 @@ Find all websites mentioning the same email address on the homepage
 
 ```shell
 # Command example:
-echo "test@domain.com" | spyse reverse-email
+echo "test@domain.com" | spysecli reverse-email
 
 # Examples of valid input lines:
 test@domain.com
@@ -257,7 +257,7 @@ Gather historical records
 Get historical DNS A records
 ```shell
 # Command example:
-echo "google.com" | spyse history-dns-a
+echo "google.com" | spysecli history-dns-a
 
 # Examples of valid input lines:
 domain.com
@@ -267,7 +267,7 @@ domain.com
 Get historical DNS AAAA records
 ```shell
 # Command example:
-echo "google.com" | spyse history-dns-aaaa
+echo "google.com" | spysecli history-dns-aaaa
 
 # Examples of valid input lines:
 domain.com
@@ -277,7 +277,7 @@ domain.com
 Get historical DNS CNAME records
 ```shell
 # Command example:
-echo "google.com" | spyse history-dns-cname
+echo "google.com" | spysecli history-dns-cname
 
 # Examples of valid input lines:
 domain.com
@@ -287,7 +287,7 @@ domain.com
 Get historical DNS TXT records
 ```shell
 # Command example:
-echo "google.com" | spyse history-dns-txt
+echo "google.com" | spysecli history-dns-txt
 
 # Examples of valid input lines:
 domain.com
@@ -297,7 +297,7 @@ domain.com
 Get historical DNS MX records
 ```shell
 # Command example:
-echo "google.com" | spyse history-dns-mx
+echo "google.com" | spysecli history-dns-mx
 
 # Examples of valid input lines:
 domain.com
@@ -307,7 +307,7 @@ domain.com
 Get historical DNS NS records
 ```shell
 # Command example:
-echo "google.com" | spyse history-dns-ns
+echo "google.com" | spysecli history-dns-ns
 
 # Examples of valid input lines:
 domain.com
@@ -317,7 +317,7 @@ domain.com
 Get historical DNS WHOIS records
 ```shell
 # Command example:
-echo "google.com" | spyse history-whois
+echo "google.com" | spysecli history-whois
 
 # Examples of valid input lines:
 domain.com
