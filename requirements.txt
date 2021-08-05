@@ -1,4 +1,4 @@
-requests~=2.26.0
-dataclasses~=0.6
-responses~=0.13.3
-dataclasses-json~=0.5.4
+loguru~=0.5.3
+validators~=0.18.2
+spyse-python~=2.1.0
+click~=8.0.1

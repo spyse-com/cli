@@ -1,176 +1,344 @@
-# Python wrapper for Spyse API
+# Spyse CLI
 
-The official wrapper for [spyse.com](https://spyse.com/) API, written in Python, aimed to help developers build their
-integrations with Spyse.
+The official command-line client for [spyse.com](https://spyse.com/).
+> **_NOTE:_**  This tool is currently in the early stage beta and shouldn't be used in production.
+> 
+> Your feedback and suggestions are highly appreciated.
+## Supported Features
 
-[Spyse](https://spyse.com/) is the most complete Internet assets search engine for every cybersecurity
-professional.
+Targeted recon:
 
-Examples of data Spyse delivers:
+- [Get Domain details](#get-domain-details)
+- [Get IPv4 host details](#get-ipv4-host-details)
+- [Get Autonomous System details](#get-autonomous-system-details)
+- [Get Email details](#get-email-details)
 
-* List of 300+ most popular open ports found on 3.5 Billion publicly accessible IPv4 hosts.
-* Technologies used on 300+ most popular open ports and IP addresses and domains using a particular technology.
-* Security score for each IP host and website, calculated based on the found vulnerabilities.
-* List of websites hosted on each IPv4 host.
-* DNS and WHOIS records of the domain names.
-* SSL certificates provided by the website hosts.
-* Structured content of the website homepages.
-* Abuse reports associated with IPv4 hosts.
-* Organizations and industries associated with the domain names.
-* Email addresses found during the Internet scanning, associated with a domain name.
+Gather associated targets:
 
-More information about the data Spyse collects is available on the [Our data](https://spyse.com/our-data) page.
+- [Subdomains lookup](#subdomains-lookup)
+- [Reverse IP lookup](#reverse-ip-lookup)
+- [Reverse NS lookup](#reverse-ns-lookup)
+- [Reverse MX lookup](#reverse-mx-lookup)
+- [Reverse PTR lookup](#reverse-ptr-lookup)
+- [Reverse AdSense ID lookup](#reverse-adsense-id-lookup)
+- [Reverse iTunes ID lookup](#reverse-itunes-id--lookup)
+- [Reverse Google Play ID lookup](#reverse-google-play-id-lookup)
+- [Reverse Google Analytics ID lookup](#reverse-google-analytics-id-lookup)
+- [Reverse Google Site Verification ID lookup](#reverse-google-site-verification-id-lookup)
+- [Reverse Email lookup](#reverse-email-lookup)
+  
+Gather historical records
 
-Spyse provides an API accessible via **token-based authentication**.
-API tokens are **available only for registered users** on their [account page](https://spyse.com/user).
+- [Get historical DNS A records](#historical-dns-a-records)
+- [Get historical DNS AAAA records](#historical-dns-aaaa-records)
+- [Get historical DNS CNAME records](#historical-dns-cnmae-records)
+- [Get historical DNS TXT records](#historical-dns-txt-records)
+- [Get historical DNS MX records](#historical-dns-mx-records)
+- [Get historical DNS NS records](#historical-dns-ns-records)
+- [Get historical WHOIS records](#historical-whois-records)
+  
 
-For more information about the API, please check the [API Reference](https://spyse-dev.readme.io/reference/quick-start).
+Custom Internet-wide assets search:
+- [Custom search for domains](#custom-search-for-domains)
+- [Custom search for IPv4 hosts](#custom-search-for-ipv4-hosts)
+
 
 ## Installation
+> **_NOTE:_**  Spyse API token is required to use this tool.
+> 
+> API tokens are **available only for registered users** on their [account page](https://spyse.com/user).   
+> For more information about the API, please check the [API Reference](https://spyse-dev.readme.io/reference/quick-start).
 
+
+### Using Docker:
+```shell
+docker build -t spysecli .
+echo "tesla.com" | docker run --interactive spysecli --api_token=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx subdomains
+```
+
+### Using pip
 ```bash
-pip3 install spyse-python
+pip3 install spysecli
+spysecli --api_token=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -h 
+
+# API token also can be read from environment
+export SPYSE_API_KEY=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+spysecli -h
 ```
 
-## Updating
+## Using as a library
+This repository is about CLI only. If you want to integrate spyse.com into your application, you should check out our SDKs.
 
-```bash
-pip3 install --no-cache-dir spyse-python
+Official:
+- [SDK for Python](https://github.com/spyse-com/spyse-python)
+- [SDK for Golang](https://github.com/spyse-com/go-spyse)
+
+Community:
+- [SDK for Ruby](https://github.com/ninoseki/spysex)
+
+## Using the client
+
+Targeted recon:
+
+### Get Domain details
+Get DNS records, SSL/TLS certificate, structured HTTP response, technologies, potential vulnerabilities, and other details about domain by its name.
+```shell
+# Command example:
+echo "tesla.com" | spysecli domain
+
+# Examples of valid input lines:
+domain.com
+https://example.com
+https://example.com/path
 ```
 
+### Get IPv4 host details
+Get Open ports, autonomous system number/organization, ISP, technologies, ip reputation and abuse reports, structured HTTP response, potential vulnerabilities, and other details about IP address.
+```shell
+# Command example:
+echo "8.8.8.8" | spysecli ip
 
-## Quick start
-```python
-from spyse import Client
-
-client = Client("your-api-token-here")
-
-d = client.get_domain_details('tesla.com')
-
-print(f"Domain details:")
-print(f"Website title: {d.http_extract.title}")
-print(f"Alexa rank: {d.alexa.rank}")
-print(f"Certificate subject org: {d.cert_summary.subject.organization}")
-print(f"Certificate issuer org: {d.cert_summary.issuer.organization}")
-print(f"Updated at: {d.updated_at}")
-print(f"DNS Records: {d.dns_records}")
-print(f"Technologies: {d.technologies}")
-print(f"Vulnerabilities: {d.cve_list}")
-print(f"Trackers: {d.trackers}")
-# ...
-
+# Examples of valid input lines:
+8.8.8.8
+8.8.8.0/24
 ```
 
-## Examples
+### Get Autonomous System details
+Get associated organization, IPv4 prefixes, IPv6 prefixes, and other details about autonomous system.
+```shell
+# Command example:
+echo "AS15169" | spysecli as
 
-- [Check your API quotas](https://github.com/spyse-com/spyse-python/tree/main/examples/get_account_quotas.py)
-- [Subdomains lookup ('Search', 'Scroll', 'Count' methods demo)](https://github.com/spyse-com/spyse-python/tree/main/examples/subdomains_lookup.py)
-- [Domain lookup](https://github.com/spyse-com/spyse-python/tree/main/examples/domain_lookup.py)
-
-
-Note: You need to export access_token to run any example:
-```bash
-export SPYSE_API_TOKEN=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+# Examples of valid input lines:
+AS15169
+as15169
+15169
 ```
 
-## How to search
-Using Spyse you can search for any Internet assets by their digital fingerprints. To do that, you need to form a specific search query and pass it to 'search', 'scroll', or 'count' methods.
+### Get Email details
+Get a list of sources in which an email was seen.
 
-Each search query can contain multiple search params. Each search param consists of name, operator, and value. 
+```shell
+# Command example:
+echo "test@domain.com" | spysecli email
 
-Check API docs to find out all existing combinations. Here is an example for domains search: https://spyse-dev.readme.io/reference/domains#domain_search
-You may also be interested in our GUI for building and testing queries before jumping to code: https://spyse.com/advanced-search/domain
-
-Example search request to find subdomains of att.com:
-```python
-from spyse import Client, SearchQuery, QueryParam, DomainSearchParams, Operators
-
-# Prepare query
-q = SearchQuery()
-domain = "att.com"
-
-# Add param to search for att.com subdomains
-q.append_param(QueryParam(DomainSearchParams.name, Operators.ends_with, '.' + domain))
-
-# Add param to search only for alive subdomains
-q.append_param(QueryParam(DomainSearchParams.http_extract_status_code, Operators.equals, "200"))
-
-# Add param to remove subdomains seen as PTR records
-q.append_param(QueryParam(DomainSearchParams.is_ptr, Operators.equals, "False"))
-
-# Next, you can use the query to run search, count or scroll methods
-c = Client("your-api-token-here")
-total_count = c.count_domains(q)
-search_results = c.search_domains(q).results
-scroll_results = c.scroll_domains(q).results
+# Examples of valid input lines:
+test@domain.com
 ```
 
-Example search request to find any alive IPv4 hosts in US, with open port 22 and running nginx:
-```python
-from spyse import Client, SearchQuery, QueryParam, IPSearchParams, Operators
+Gather associated targets:
 
-# Prepare query
-q = SearchQuery()
+### Subdomains lookup
+Find subdomains of a target domain
+```shell
+# Command example:
+echo "tesla.com" | spysecli subdomains
 
-# Add param to search for IPv4 hosts located in US
-q.append_param(QueryParam(IPSearchParams.geo_country_iso_code, Operators.equals, 'US'))
-
-# Add param to search only for hosts with open 22 port
-q.append_param(QueryParam(IPSearchParams.open_port, Operators.equals, "22"))
-
-# Add param to search only for hosts with nginx
-q.append_param(QueryParam(IPSearchParams.port_technology_name, Operators.contains, "nginx"))
-
-# Next, you can use the query to run search, count or scroll methods
-c = Client("your-api-token-here")
-total_count = c.count_ip(q)
-search_results = c.search_ip(q).results
-scroll_results = c.scroll_ip(q).results
+# Examples of valid input lines:
+domain.com
+https://example.com
+https://example.com/path
 ```
 
-## Scroll vs Search
-While a 'search' request allows to paginate over the first 10'000 results, the 'scroll search' can be used for deep pagination over a larger number of results (or even all results) in much the same way as you would use a cursor on a traditional database. 
+### Reverse IP lookup
+Find domains hosted on IPv4 host
+```shell
+# Command example:
+echo "8.8.8.8" | spysecli reverse-ip
 
-In order to use scrolling, the initial search response will return a 'search_id' data field which should be specified in the subsequent requests in order to iterate over the rest of results.
-
-### Limitations
-The scroll is available only for customers with 'Pro' subscription.
-
-Example code to check if the scroll is available for your account
-```python
-from spyse import Client
-c = Client("your-api-token-here")
-
-if c.get_quotas().is_scroll_search_enabled:
-    print("Scroll is available")
-else:
-    print("Scroll is NOT available")
+# Examples of valid input lines:
+8.8.8.8
+8.8.8.0/24
 ```
 
+### Reverse NS lookup
+Shows which domains are using given name server
 
-## Development
+```shell
+# Command example:
+echo "ns1.google.com" | spysecli reverse-ns
 
-### Installation
-```bash
-git clone https://github.com/spyse-com/spyse-python
-pip install -e .
+# Examples of valid input lines:
+ns1.domain.com
 ```
 
+### Reverse MX lookup
+Shows which domains are using given mail server
 
-Run tests:
-```bash
-cd tests
-python client_test.py
+```shell
+# Command example:
+echo "mx.google.com" | spysecli reverse-mx
+
+# Examples of valid input lines:
+mx.google.com
 ```
 
-## License
+### Reverse PTR lookup
+Shows which IPv4 hosts are using given PTR record
 
-Distributed under the MIT License. See [LICENSE](https://github.com/spyse-com/spyse-python/tree/main/LICENSE.md) for more information.
+```shell
+# Command example:
+echo "google.com" | spysecli reverse-ptr
 
-## Troubleshooting and contacts
+# Examples of valid input lines:
+domain.com
+```
 
-For any proposals and questions, please write at:
+### Reverse AdSense ID lookup
+Find all domains sharing the same AdSense ID
 
-- Email: [contact@spyse.com](mailto:contact@spyse.com)
-- Discord: [channel](https://discord.gg/XqaUP8c)
-- Twitter: [@scanpatch](https://twitter.com/scanpatch), [@MrMristov](https://twitter.com/MrMristov)
+```shell
+# Command example:
+echo "1234567891234567" | spysecli reverse-adsense
+
+# Examples of valid input lines:
+pub-1234567891234567
+1234567891234567
+```
+
+### Reverse iTunes ID lookup
+Find all domains sharing the same iTunes app ID
+
+```shell
+# Command example:
+echo "1188352635" | spysecli reverse-itunes
+
+# Examples of valid input lines:
+1188352635
+```
+
+### Reverse Google Play ID lookup
+Find all domains sharing the same Google Play app ID
+
+```shell
+# Command example:
+echo "google.com" | spysecli reverse-google-play
+
+# Examples of valid input lines:
+domain.com
+```
+
+### Reverse Google Analytics ID lookup
+Find all domains sharing the same Google Analytics ID
+
+```shell
+# Command example:
+echo "UA-12345-12" | spysecli reverse-google-analytics
+
+# Examples of valid input lines:
+UA-12345-12
+```
+
+### Reverse Google Site Verification ID lookup
+Find all domains sharing the same Google site verification code
+
+```shell
+# Command example:
+echo "rXOxyZounnZasA8Z7oaD3c14JdjS9aKSWvsR1EbUSIQ" | spysecli reverse-google-site-verification
+
+# Examples of valid input lines:
+rXOxyZounnZasA8Z7oaD3c14JdjS9aKSWvsR1EbUSIQ
+```
+
+### Reverse Email lookup
+Find all websites mentioning the same email address on the homepage
+
+```shell
+# Command example:
+echo "test@domain.com" | spysecli reverse-email
+
+# Examples of valid input lines:
+test@domain.com
+```
+
+Gather historical records
+
+### Get historical DNS A records
+Get historical DNS A records
+```shell
+# Command example:
+echo "google.com" | spysecli history-dns-a
+
+# Examples of valid input lines:
+domain.com
+```
+
+### Get historical DNS AAAA records
+Get historical DNS AAAA records
+```shell
+# Command example:
+echo "google.com" | spysecli history-dns-aaaa
+
+# Examples of valid input lines:
+domain.com
+```
+
+### Get historical DNS CNAME records
+Get historical DNS CNAME records
+```shell
+# Command example:
+echo "google.com" | spysecli history-dns-cname
+
+# Examples of valid input lines:
+domain.com
+```
+
+### Get historical DNS TXT records
+Get historical DNS TXT records
+```shell
+# Command example:
+echo "google.com" | spysecli history-dns-txt
+
+# Examples of valid input lines:
+domain.com
+```
+
+### Get historical DNS MX records
+Get historical DNS MX records
+```shell
+# Command example:
+echo "google.com" | spysecli history-dns-mx
+
+# Examples of valid input lines:
+domain.com
+```
+
+### Get historical DNS NS records
+Get historical DNS NS records
+```shell
+# Command example:
+echo "google.com" | spysecli history-dns-ns
+
+# Examples of valid input lines:
+domain.com
+```
+
+### Get historical WHOIS records
+Get historical DNS WHOIS records
+```shell
+# Command example:
+echo "google.com" | spysecli history-whois
+
+# Examples of valid input lines:
+domain.com
+```
+
+### Custom search for domains
+Returns a list of domains that matched the search query.
+
+Use [API docs](https://spyse-dev.readme.io/reference/domains#domain_search) and [Spyse Advanced Search](https://spyse.com/advanced-search/domain)
+ to craft your own request.
+```shell
+# Command example:
+echo '{"search_params":[{"name":{"operator":"ends","value":".spyse.com"}}]}' | spysecli search-domains
+```
+
+### Custom search for IPv4 hosts
+Returns a list of IPv4 hosts that matched the search query.
+
+Use [API docs](https://spyse-dev.readme.io/reference/ips#ip_search) and [Spyse Advanced Search](https://spyse.com/advanced-search/ip)
+ to craft your own request.
+```shell
+# Command example:
+echo '{"search_params":[{"open_port":{"operator":"eq","value":"22"}}]}' | spysecli search-ip
+```
