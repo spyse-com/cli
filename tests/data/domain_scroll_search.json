@@ -1,0 +1,279 @@
+{
+  "data": {
+    "search_id": "69735f6170695f726571756573746f6c657379614073707973652e636f6d323032312d30382d30352030383a35393a32392e313539353233333631202b30303030205554435b7b2261736e223a7b226f70657261746f72223a226571222c2276616c7565223a2231227d7d5de1f6d98a214b9ab97f5b9ce669804935",
+    "items": [
+      {
+        "alexa": {
+          "rank": 45948,
+          "updated_at": "2021-04-25T06:32:30.633147345Z"
+        },
+        "cert_summary": {
+          "fingerprint_sha256": "39b1d164f63d6044e92b4b72ff054a6ad0e9584968b132a9e1fcd90b4b45d449",
+          "issuer": {
+            "country": "US",
+            "common_name": "Network Solutions DV Server CA 2",
+            "locality": "Herndon",
+            "organization": "Network Solutions L.L.C.",
+            "organizational_unit": "",
+            "province": "VA",
+            "emailAddress": ""
+          },
+          "issuer_dn": "C=US, ST=VA, L=Herndon, O=Network Solutions L.L.C., CN=Network Solutions DV Server CA 2",
+          "subject": {
+            "country": "",
+            "common_name": "www.test.com",
+            "locality": "",
+            "organization": "",
+            "organizational_unit": "",
+            "province": "",
+            "businessCategory": "",
+            "emailAddress": "",
+            "jurisdictionCountry": "",
+            "jurisdictionStateOrProvince": "",
+            "postalCode": "",
+            "serialNumber": "",
+            "street": ""
+          },
+          "subject_dn": "CN=www.test.com",
+          "tls_version": "TLSv1.2",
+          "validity_end": "2022-01-24T23:59:59Z",
+          "updated_at": null
+        },
+        "dns_records": {
+          "A": [
+            "69.172.200.235"
+          ],
+          "AAAA": null,
+          "CAA": null,
+          "CNAME": null,
+          "MX": null,
+          "NS": [
+            "ns3.hosting.com",
+            "ns1.hosting.com",
+            "ns2.hosting.com"
+          ],
+          "SOA": {
+            "email": "jposch.testcentral.com",
+            "expire": 604800,
+            "min_ttl": 3600,
+            "ns": "ns1.hosting.com",
+            "refresh": 10800,
+            "retry": 3600,
+            "serial": 65
+          },
+          "TXT": [
+            "google-site-verification=kW9t2V_S7WjOX57zq0tP8Ae_WJhRwUcZoqpdEkvuXJk"
+          ],
+          "SPF": null,
+          "updated_at": null
+        },
+        "hosts_enrichment": [
+          {
+            "ip": "69.172.200.235",
+            "as_num": 19324,
+            "as_org": "DOSARREST",
+            "isp": "Dosarrest Internet Security",
+            "city_name": "",
+            "country": "Canada",
+            "country_iso_code": "CA",
+            "location": {
+              "lat": 43.6319,
+              "lon": -79.3716
+            }
+          }
+        ],
+        "http_extract": {
+          "cookies": null,
+          "description": "",
+          "emails": null,
+          "final_redirect_url": {
+            "full_uri": "https://www.test.com/",
+            "host": "www.test.com",
+            "path": "/"
+          },
+          "extracted_at": "2021-04-21T05:47:08.725880748Z",
+          "favicon_sha256": "ca3e9878d22dcffc4e4e943207d5441483c002ecee6b05e1a12a91c3b1823f07",
+          "http_headers": [
+            {
+              "name": "Server",
+              "value": "nginx/1.18.0"
+            },
+            {
+              "name": "Date",
+              "value": "Wed, 21 Apr 2021 05:46:52 GMT"
+            },
+            {
+              "name": "Content-Type",
+              "value": "text/html"
+            },
+            {
+              "name": "Transfer-Encoding",
+              "value": "chunked"
+            },
+            {
+              "name": "Connection",
+              "value": "keep-alive"
+            },
+            {
+              "name": "Keep-Alive",
+              "value": "timeout=20"
+            },
+            {
+              "name": "X-DIS-Request-ID",
+              "value": "1d51f19793be83cf919070a74cf9a6ec"
+            },
+            {
+              "name": "P3P",
+              "value": "CP=\"NON DSP COR ADMa OUR IND UNI COM NAV INT\""
+            },
+            {
+              "name": "Cache-Control",
+              "value": "no-cache"
+            }
+          ],
+          "http_status_code": 200,
+          "links": null,
+          "meta_tags": null,
+          "robots_txt": "",
+          "scripts": null,
+          "styles": null,
+          "title": ""
+        },
+        "is_CNAME": true,
+        "is_MX": true,
+        "is_NS": true,
+        "is_PTR": true,
+        "is_subdomain": null,
+        "name": "test.com",
+        "name_without_suffix": "test",
+        "updated_at": "2021-04-25T06:32:30.633147345Z",
+        "whois_parsed": {
+          "admin": {
+            "city": "Jacksonville",
+            "country": "US",
+            "email": "fy4gz7f67tr@networksolutionsprivateregistration.com",
+            "fax": "",
+            "fax_ext": "",
+            "id": "",
+            "name": "PERFECT PRIVACY, LLC",
+            "organization": "",
+            "phone": "+1.5707088780",
+            "phone_ext": "",
+            "postal_code": "32256",
+            "province": "FL",
+            "street": "5335 Gate Parkway care of Network Solutions PO Box 459",
+            "street_ext": ""
+          },
+          "registrant": {
+            "city": "Jacksonville",
+            "country": "US",
+            "email": "fy4gz7f67tr@networksolutionsprivateregistration.com",
+            "fax": "",
+            "fax_ext": "",
+            "id": "",
+            "name": "PERFECT PRIVACY, LLC",
+            "organization": "",
+            "phone": "+1.5707088780",
+            "phone_ext": "",
+            "postal_code": "32256",
+            "province": "FL",
+            "street": "5335 Gate Parkway care of Network Solutions PO Box 459",
+            "street_ext": ""
+          },
+          "registrar": {
+            "created_date": "1997-06-18T04:00:00Z",
+            "domain_dnssec": "unsigned",
+            "domain_id": "5429075_DOMAIN_COM-VRSN",
+            "domain_name": "TEST.COM",
+            "domain_status": "clientTransferProhibited",
+            "emails": "abuse@web.com",
+            "expiration_date": "2021-06-17T04:00:00Z",
+            "name_servers": "NS1.HOSTING.COM,NS2.HOSTING.COM,NS3.HOSTING.COM",
+            "referral_url": "",
+            "registrar_id": "2",
+            "registrar_name": "Network Solutions, LLC",
+            "updated_date": "2019-04-18T07:16:01Z",
+            "whois_server": "whois.networksolutions.com"
+          },
+          "tech": {
+            "city": "Jacksonville",
+            "country": "US",
+            "email": "p96av9hq7dq@networksolutionsprivateregistration.com",
+            "fax": "",
+            "fax_ext": "",
+            "id": "",
+            "name": "PERFECT PRIVACY, LLC",
+            "organization": "",
+            "phone": "+1.5707088780",
+            "phone_ext": "",
+            "postal_code": "32256",
+            "province": "FL",
+            "street": "5335 Gate Parkway care of Network Solutions PO Box 459",
+            "street_ext": ""
+          },
+          "updated_at": null
+        },
+        "whois_updated_at": null,
+        "screenshot_url": "https://spycdn.com/screenshot/41/4193efb171a5de1859c0117faef60903.png",
+        "neighbors": 12,
+        "severity_details": {
+          "HIGH": 0,
+          "MEDIUM": 0,
+          "LOW": 0
+        },
+        "security_score": {
+          "score": 100
+        },
+        "cve_list": null,
+        "organizations": [
+          {
+            "crunchbase": {
+              "name": "Spyse",
+              "legal_name": "",
+              "homepage_url": "https://spyse.com/",
+              "description": "Spyse is a cybersecurity data provider that is presented by a cybersecurity search engine for technical. It provides users with access to any technical information that is usually used for penetration testing and cyber investigations.  The company implements a unique data gathering approach, using a distributed scanning system with more than 50 servers spread across the world for getting larger and more precise data.  Data storing has its own features as self-made analyzers that connect all the information found by scanners allowing exploring relationships between network elements as well as instant data accessing. Spyse was released at the beginning of the 2020 year.",
+              "short_description": "Spyse is a lead cybersecurity data provider.",
+              "address": "",
+              "categories": [
+                "Big Data",
+                "Cyber Security",
+                "Search Engine"
+              ],
+              "founded_on": "2018-07-09",
+              "closed_on": "",
+              "contact_email": "contact@spyse.com",
+              "image_url": "https://res.cloudinary.com/crunchbase-production/image/upload/ap1f3uwpfqdckplqfr29",
+              "num_employees_enum": "1-10",
+              "operating_status": "",
+              "phone_number": "",
+              "revenue_range": "",
+              "status": "operating",
+              "country_code": "",
+              "state_code": "",
+              "region": "",
+              "city": "",
+              "postal_code": "",
+              "cb_url": "https://www.crunchbase.com/organization/spyse",
+              "is_primary": true,
+              "created_at": "2020-05-19 15:42:33",
+              "updated_at": "2021-03-25 12:45:31"
+            }
+          }
+        ],
+        "technologies": [
+          {
+            "name": "Nginx",
+            "version": "1.18.0"
+          }
+        ],
+        "trackers": {
+          "adsense_id": "",
+          "apple_itunes_app": "",
+          "google_play_app": "",
+          "google_analytics_key": "",
+          "google_site_verification": ""
+        }
+      }
+    ]
+  }
+}
