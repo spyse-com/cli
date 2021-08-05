@@ -100,9 +100,9 @@ class TestSpyse(unittest.TestCase):
 
         final = self.client.search_historical_dns("A", "google.com")
 
-        self.assertEqual(final[0].value, "13.170.7.0")
-        self.assertEqual(final[0].first_seen, "2020-12-18")
-        self.assertEqual(final[0].last_seen, "2020-12-18")
+        self.assertEqual(final.results[0].value, "13.170.7.0")
+        self.assertEqual(final.results[0].first_seen, "2020-12-18")
+        self.assertEqual(final.results[0].last_seen, "2020-12-18")
 
     @responses.activate
     def test_history_whois(self):
@@ -120,11 +120,11 @@ class TestSpyse(unittest.TestCase):
 
         final = self.client.search_historical_whois("google.com")
 
-        self.assertEqual(final[0].registrar.created_date, "2013-12-16T19:33:28Z")
-        self.assertEqual(final[0].registrar.emails, "abuse@namecheap.com")
-        self.assertEqual(final[0].tech.city, "")
-        self.assertEqual(final[0].updated_at, None)
-        self.assertEqual(final[0].created_at, "2021-03-16T23:00:00+02:00")
+        self.assertEqual(final.results[0].registrar.created_date, "2013-12-16T19:33:28Z")
+        self.assertEqual(final.results[0].registrar.emails, "abuse@namecheap.com")
+        self.assertEqual(final.results[0].tech.city, "")
+        self.assertEqual(final.results[0].updated_at, None)
+        self.assertEqual(final.results[0].created_at, "2021-03-16T23:00:00+02:00")
 
     @responses.activate
     def test_get_domain(self):

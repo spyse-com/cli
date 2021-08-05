@@ -31,9 +31,6 @@ class AS:
     ipv4_prefixes: Optional[List[Prefix]] = None
     ipv6_prefixes: Optional[List[Prefix]] = None
 
-    # def from_json(self, data):
-    #     self.__dict__ = json.loads(data)
-
 
 @dataclass_json
 @dataclass
