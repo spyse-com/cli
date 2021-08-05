@@ -70,6 +70,7 @@ class Client:
     def __init__(self, api_token, base_url=DEFAULT_BASE_URL):
         self.session = requests.Session()
         self.session.headers.update({'Authorization': 'Bearer ' + api_token})
+        self.session.headers.update({'User-Agent': 'spyse-python'})
         self.base_url = base_url
 
     def __get(self, endpoint: str) -> Response:
@@ -87,6 +88,9 @@ class Client:
             body = {"search_params": query.get()}
 
         return Response.from_dict(self.session.post(endpoint, json=body).json())
+
+    def set_user_agent(self, s: str):
+        self.session.headers.update({'User-Agent': s})
 
     def get_quotas(self) -> Optional[Account]:
         """Returns details about your account quotas."""
