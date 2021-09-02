@@ -8,7 +8,7 @@ with open('LICENSE.md') as f:
     lic = f.read()
 
 setup(name='spysecli',
-      version='0.0.4',
+      version='0.1.4',
       description='CLI for spyse.com',
       long_description=readme,
       long_description_content_type='text/markdown',
@@ -20,5 +20,5 @@ setup(name='spysecli',
       entry_points={
           'console_scripts': ['spysecli=bin.main:cli'],
       },
-      install_requires=['spyse-python~=2.1.2', 'loguru~=0.5.3', 'validators~=0.18.2', 'click~=8.0.1']
+      install_requires=['spyse-python~=2.2.2', 'loguru~=0.5.3', 'validators~=0.18.2', 'click~=8.0.1']
       )
