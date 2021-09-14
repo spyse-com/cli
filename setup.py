@@ -8,7 +8,7 @@ with open('LICENSE.md') as f:
     lic = f.read()
 
 setup(name='spysecli',
-      version='0.1.5',
+      version='0.1.6',
       description='CLI for spyse.com',
       long_description=readme,
       long_description_content_type='text/markdown',
